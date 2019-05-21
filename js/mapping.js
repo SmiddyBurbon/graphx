@@ -76,6 +76,18 @@ function getTeam(driver) {
   else if (name.includes("ambrosio")) { return "mahindra"; }
   else if (name.includes("rosenqvist")) { return "mahindra"; }
   else if (name.includes("wehrlein")) { return "mahindra"; }
+
+  else if (name.includes("techeetah")) { return "techeetah"; }
+  else if (name.includes("mahindra")) { return "mahindra"; }
+  else if (name.includes("virgin")) { return "virgin"; }
+  else if (name.includes("nissan")) { return "nissan"; }
+  else if (name.includes("bmw")) { return "bmw"; }
+  else if (name.includes("audi")) { return "audi"; }
+  else if (name.includes("nio")) { return "nio"; }
+  else if (name.includes("venturi")) { return "venturi"; }
+  else if (name.includes("dragon")) { return "dragon"; }
+  else if (name.includes("jaguar")) { return "jaguar"; }
+  else if (name.includes("hwa")) { return "hwa"; }
 }
 
 function getCountry(city) {

@@ -64,7 +64,7 @@ h1,h2 {
 #ranking {
   width: 100%;
 }
-.driver {
+.driver, .team {
   display: flex;
   flex-direction: row;
   text-transform: uppercase;
@@ -73,22 +73,26 @@ h1,h2 {
   height: 64px;
   justify-content: space-between;
 }
-.driver > div {
+.driver > div,
+.team > div {
   padding: 0 16px 4px;
   display: flex;
   align-items: center;
 }
-.driver .position, .driver .points {
+.driver .position, .driver .points,
+.team .position, .team .points {
   color: #fff;
   font-family: 'Lato', monospace;
   font-weight: bold;
 }
-.driver .position {
+.driver .position,
+.team .position {
   background-color: var(--turquoise);
   justify-content: center;
   width: 80px;
 }
-.driver .points {
+.driver .points,
+.team .points {
   justify-content: flex-end;
   padding: 0 24px;
 }
@@ -110,7 +114,8 @@ h1,h2 {
   height: 64px;
   margin-top: 4px;
 }
-.driver .points {
+.driver .points,
+.team .points {
   background-color: var(--dark-blue);
   text-align: right;
   width: 104px;
@@ -152,7 +157,8 @@ button {
 #form .tablehead {
   margin-top: 2rem;
 }
-#form > div[class*="driver"], #form .tablehead {
+#form > div[class*="driver"], #form .tablehead,
+#form > div[class*="team"], #form .tablehead {
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
 }

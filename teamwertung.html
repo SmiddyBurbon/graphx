@@ -22,17 +22,17 @@
       </div>
 
       <div id="ranking">
-        <div class="driver" id="driver1"></div>
-        <div class="driver" id="driver2"></div>
-        <div class="driver" id="driver3"></div>
-        <div class="driver" id="driver4"></div>
-        <div class="driver" id="driver5"></div>
-        <div class="driver" id="driver6"></div>
-        <div class="driver" id="driver7"></div>
-        <div class="driver" id="driver8"></div>
-        <div class="driver" id="driver9"></div>
-        <div class="driver" id="driver10"></div>
-        <div class="driver" id="driver11"></div>
+        <div class="team" id="team1"></div>
+        <div class="team" id="team2"></div>
+        <div class="team" id="team3"></div>
+        <div class="team" id="team4"></div>
+        <div class="team" id="team5"></div>
+        <div class="team" id="team6"></div>
+        <div class="team" id="team7"></div>
+        <div class="team" id="team8"></div>
+        <div class="team" id="team9"></div>
+        <div class="team" id="team10"></div>
+        <div class="team" id="team11"></div>
       </div>
 
       <img id="logo" src="img/logo.png" />
@@ -46,7 +46,7 @@
     <script type="text/javascript" src="js/canvas2image.js"></script>
     <script type="text/javascript" src="js/mapping.js"></script>
     <script type="text/javascript">
-      var drivers = [];
+      var teams = [];
 
       window.onload = function() {
         generateForm();
@@ -61,20 +61,18 @@
         );
 
         for (var i = 1; i < 12; i++) {
-          document.getElementById('form').insertAdjacentHTML('beforeend', '<div class="driver' + i + 'Input"><div><input type="number" id="driver' + i + 'pos" name="driver' + i + 'pos" value=' + i + ' /></div><div><input type="text" id="driver' + i + 'name" name="driver' + i + 'name" /></div><div><input type="number" id="driver' + i + 'pts" name="driver' + i + 'pts" /></div></div>');
+          document.getElementById('form').insertAdjacentHTML('beforeend', '<div class="team' + i + 'Input"><div><input type="number" id="team' + i + 'pos" name="team' + i + 'pos" value=' + i + ' /></div><div><input type="text" id="team' + i + 'name" name="team' + i + 'name" /></div><div><input type="number" id="team' + i + 'pts" name="team' + i + 'pts" /></div></div>');
         }
       }
 
       function createObject() {
-        drivers.length = 0;
+        teams.length = 0;
 
         for (var i = 1; i < 12; i++) {
-          drivers.push({
+          teams.push({
             "position": parseInt(i),
-            "name": document.getElementById('driver' + i + 'name').value,
-            "points": parseInt(document.getElementById('driver' + i + 'pts').value),
-            "nationality": getNationality(document.getElementById('driver' + i + 'name').value),
-            "team": getTeam(document.getElementById('driver' + i + 'name').value)
+            "name": document.getElementById('team' + i + 'name').value,
+            "points": parseInt(document.getElementById('team' + i + 'pts').value)
           });
         }
       }
@@ -92,14 +90,14 @@
         document.getElementById('country').innerHTML = eventImg;
 
         for (var i = 1; i < 12; i++) {
-          document.getElementById('driver' + i).innerHTML =
-          '<div class="position">' + drivers[(i-1)].position + '</div>' +
+          console.log(teams[(i-1)].name);
+          document.getElementById('team' + i).innerHTML =
+          '<div class="position">' + teams[(i-1)].position + '</div>' +
           '<div class="person">' +
-            '<img class="flag" src="img/flags/' + drivers[(i-1)].nationality + '.png">' +
-            '<div class="name">' + drivers[(i-1)].name + '</div>' +
-            '<img class="team" src="img/cars/' + drivers[(i-1)].team + '.png">' +
+            '<div class="name">' + teams[(i-1)].name + '</div>' +
+            '<img class="team" src="img/cars/' + getTeam(teams[(i-1)].name) + '.png">' +
           '</div>' +
-          '<div class="points">' + drivers[(i-1)].points + '</div>';
+          '<div class="points">' + teams[(i-1)].points + '</div>';
         }
 
         document.getElementById('canvas').scrollIntoView();
