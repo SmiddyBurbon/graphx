@@ -14,8 +14,11 @@
 
     <div id="canvas">
       <div class="headline">
-        <h1 id="h1"></h1>
-        <h2 id="h2"></h2>
+        <div id="country"></div>
+        <div id="event">
+          <h1 id="h1"></h1>
+          <h2 id="h2"></h2>
+        </div>
       </div>
 
       <div id="ranking">
@@ -35,9 +38,9 @@
       <img id="logo" src="img/logo.png" />
     </div>
 
-    <!-- <section id="download">
-      <button id="btn-download" onclick="downloadImage()">Download image</button>
-    </section> -->
+    <section id="download">
+      <button id="btn-download" onclick="downloadImage(canvas, 'fahrerwertung.png')">Download image</button>
+    </section>
 
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <script type="text/javascript" src="js/canvas2image.js"></script>
@@ -141,6 +144,23 @@
         else if (name.includes("wehrlein")) { return "mahindra"; }
       }
 
+      function getCountry(city) {
+        var country = city.toLowerCase();
+
+        if (country.includes("diriyya")) { return "sa"; }
+        else if (country.includes("marrakesch")) { return "ma"; }
+        else if (country.includes("santiago")) { return "cl"; }
+        else if (country.includes("mexico")) { return "mx"; }
+        else if (country.includes("hong")) { return "hk"; }
+        else if (country.includes("sanya")) { return "cn"; }
+        else if (country.includes("rom")) { return "it"; }
+        else if (country.includes("paris")) { return "fr"; }
+        else if (country.includes("monaco")) { return "mc"; }
+        else if (country.includes("berlin")) { return "de"; }
+        else if (country.includes("bern")) { return "ch"; }
+        else if (country.includes("york")) { return "us"; }
+      }
+
       function createObject() {
         drivers.length = 0;
 
@@ -161,9 +181,11 @@
 
         var h1 = document.getElementById('headline').value;
         var h2 = document.getElementById('subline').value;
+        var eventImg = '<img class="flag" src="img/flags/' + getCountry(h2) + '.png">';
 
         document.getElementById('h1').innerHTML = document.getElementById('headline').value;
         document.getElementById('h2').innerHTML = document.getElementById('subline').value;
+        document.getElementById('country').innerHTML = eventImg;
 
         for (var i = 1; i < 12; i++) {
           document.getElementById('driver' + i).innerHTML =
@@ -187,9 +209,9 @@
           allowTaint: true
         }).then(canvas => {
           // document.body.insertAdjacentHTML('beforeend', '<p id="hint">Right Click => Save</p>');
-          document.getElementById('canvas').style.display = "none";
-          document.body.appendChild(canvas);
-          download(canvas, 'fahrerwertung.png');
+          // document.getElementById('canvas').style.display = "none";
+          // document.body.appendChild(canvas);
+          // download(canvas, 'fahrerwertung.png');
           // document.getElementById('hint').scrollIntoView();
         });
       }

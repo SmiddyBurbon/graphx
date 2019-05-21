@@ -29,11 +29,24 @@ body {
   text-align: center;
 }
 
+#country {
+  margin-right: 24px;
+}
+#country img {
+  width: 166px;
+  height: 104px;
+  display: block;
+}
+#country, #event {
+  display: inline;
+}
 .headline {
   background-color: #fff;
-  padding: 20px;
   margin-bottom: 36px;
   text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 h1 {
   font-size: 40px;
