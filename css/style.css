@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,900|Source+Code+Pro:900');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  padding: 2rem;
+}
+
+:root {
+  --turquoise: #11a7bb;
+  --dark-blue: #005793;
+}
+
+#canvas {
+  background-color: var(--turquoise);
+  background-image: url('../img/bg.png');
+  background-size: contain;
+  margin: 0 auto;
+  color: #11a7bb;
+  width: 1200px;
+  height: 1200px;
+  padding: 80px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.headline {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 36px;
+  text-align: left;
+}
+h1 {
+  font-size: 40px;
+  font-weight: 900;
+}
+h2 {
+  font-size: 28px;
+  font-weight: 400;
+}
+h1,h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#ranking {
+  width: 100%;
+}
+.driver {
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  background-color: #fff;
+  margin-top: 4px;
+  height: 64px;
+  justify-content: space-between;
+}
+.driver > div {
+  padding: 0 16px 4px;
+  display: flex;
+  align-items: center;
+}
+.driver .position, .driver .points {
+  color: #fff;
+  font-family: 'Lato', monospace;
+  font-weight: bold;
+}
+.driver .position {
+  background-color: var(--turquoise);
+  justify-content: center;
+  width: 80px;
+}
+.driver .points {
+  justify-content: flex-end;
+  padding: 0 24px;
+}
+.person {
+  flex-grow: 1;
+}
+.person .name {
+  text-align: left;
+  flex-grow: 1;
+  letter-spacing: 0.04em;
+  font-weight: 900;
+}
+.person .flag {
+  height: 40px;
+  width: 64px;
+  margin-right: 16px;
+}
+.person .team {
+  height: 64px;
+  margin-top: 4px;
+}
+.driver .points {
+  background-color: var(--dark-blue);
+  text-align: right;
+  width: 104px;
+}
+
+#input {
+  min-height: 100vh;
+  width: 50%;
+  margin: 0 auto;
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  background-color: #11a7bb;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 1.25rem;
+  border: none;
+  outline: none;
+  padding: 1rem 1.5rem;
+  border-radius: 800px;
+  font-family: Lato;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  margin: 2rem 0;
+}
+#form {
+  width: 80%;
+}
+#form > div {
+  margin: 0.2rem 1rem;
+}
+#form > div:nth-of-type(0n+2) {
+  margin-top: 1rem;
+}
+#form .tablehead {
+  margin-top: 2rem;
+}
+#form > div[class*="driver"], #form .tablehead {
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 0.25fr;
+}
+#form > div > div,
+#form .tablehead span {
+  margin: 0 0.5rem;
+}
+#form > div > div:first-of-type,
+#form .tablehead span:first-of-type {
+  margin-left: 0;
+}
+#form > div > div:last-of-type,
+#form .tablehead span:last-of-type {
+  margin-right: 0;
+}
+span, label, input {
+  display: block;
+}
+span, label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  margin-bottom:   0.2rem;
+}
+#form input {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+#logo {
+  text-align: center;
+  width: 50%;
+  margin-top: -40px;
+}
+#download {
+  text-align: center;
+}
+#canvas {
+  display: none;
+}
