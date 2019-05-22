@@ -38,9 +38,9 @@
       <img id="logo" src="img/logo.png" />
     </div>
 
-    <!-- <section id="download">
-      <button id="btn-download" onclick="downloadImage(canvas, 'teamwertung.png')">Download image</button>
-    </section> -->
+    <section id="download">
+      <button id="btn-download" onclick="downloadImage('teamwertung')">Download image</button>
+    </section>
 
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <script type="text/javascript" src="js/canvas2image.js"></script>
@@ -101,8 +101,6 @@
         }
 
         document.getElementById('canvas').scrollIntoView();
-
-        downloadImage();
       }
 
       function downloadImage() {
