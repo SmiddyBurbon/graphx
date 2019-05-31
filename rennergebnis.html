@@ -75,7 +75,7 @@
 
         for (var i = 1; i < 12; i++) {
           drivers.push({
-            "position": parseInt(i),
+            "position": parseInt(document.getElementById('driver' + i + 'pos').value),
             "name": document.getElementById('driver' + i + 'name').value,
             "nationality": getNationality(document.getElementById('driver' + i + 'name').value),
             "team": getTeam(document.getElementById('driver' + i + 'name').value)
