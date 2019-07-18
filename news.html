@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body>
+    <section id="input">
+      <div id="form">
+      </div>
+      <button id="btnSubmit" onclick="generateImage()">Generate image</button>
+    </section>
+
+    <div id="canvas" class="news">
+      <div id="overlay"></div>
+      <div id="text">
+        <h1 id="h1"></h1>
+        <h2 id="h2"></h2>
+      </div>
+
+      <!-- <img id="logo" src="img/logo.png" /> -->
+    </div>
+
+    <section id="download">
+      <button id="btn-download" onclick="downloadImage('news_')">Download image</button>
+    </section>
+
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <script type="text/javascript" src="js/canvas2image.js"></script>
+    <script type="text/javascript" src="js/mapping.js"></script>
+    <script type="text/javascript" src="js/download.js"></script>
+    <script type="text/javascript">
+      var article = {};
+      var bgImage = {};
+
+      window.onload = function() {
+        generateForm();
+      };
+
+      function generateForm() {
+        document.getElementById('form').insertAdjacentHTML(
+          'beforeend',
+          '<div><label for="roofline">Roofline</label><input type="text" id="roofline" name="roofline" /></div>' +
+          '<div><label for="headline">Headline</label><input type="text" id="headline" name="headline" /></div>' +
+          '<div><label for="bg_image">Background Image</label><input type="file" id="bg_image" name="bg_image" /></div>' +
+          '<div><label for="posX">X Position</label>' +
+          '<select id="posX">' +
+          '<option value="top">Top</option>' +
+          '<option value="bottom">Bottom</option>' +
+          '</select>' +
+          '</div>' +
+          '<div><label for="posY">Y Position</label>' +
+          '<select id="posY">' +
+          '<option value="left">Left</option>' +
+          '<option value="right">Right</option>' +
+          '</select>' +
+          '</div>'
+        );
+      }
+
+      document.getElementById('btnSubmit').addEventListener('click', readURL, true);
+      function readURL(){
+        var file = document.getElementById('bg_image').files[0];
+        var reader = new FileReader();
+
+        reader.onloadend = function(){
+          document.getElementById('canvas').style.backgroundImage = "url(" + reader.result + ")";
+        }
+
+        if(file){
+          reader.readAsDataURL(file);
+        }
+        else{
+        }
+      }
+
+      function createObject() {
+        article.length = 0;
+        article.roofline = document.getElementById('roofline').value;
+        article.headline = document.getElementById('headline').value;
+        article.x = document.getElementById('posX').value;
+        article.y = document.getElementById('posY').value;
+      }
+
+      function generateImage() {
+        document.getElementById('text').className = "";
+
+        document.getElementById('canvas').style.display = "block";
+        document.getElementById('canvas').style.backgroundSize = "cover";
+        createObject();
+
+        document.getElementById('h1').innerHTML = article.roofline;
+
+        document.getElementById('h2').innerHTML = article.headline;
+
+        document.getElementById('text').classList.add(article.x);
+        document.getElementById('text').classList.add(article.y);
+
+        document.getElementById('canvas').scrollIntoView();
+      }
+    </script>
+
+  </body>
+</html>
