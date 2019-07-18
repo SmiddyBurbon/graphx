@@ -19,7 +19,7 @@
         <h2 id="h2"></h2>
       </div>
 
-      <!-- <img id="logo" src="img/logo.png" /> -->
+      <img id="logo" class="small" src="img/logo_small.png" />
     </div>
 
     <section id="download">
@@ -44,13 +44,13 @@
           '<div><label for="roofline">Roofline</label><input type="text" id="roofline" name="roofline" /></div>' +
           '<div><label for="headline">Headline</label><input type="text" id="headline" name="headline" /></div>' +
           '<div><label for="bg_image">Background Image</label><input type="file" id="bg_image" name="bg_image" /></div>' +
-          '<div><label for="posX">X Position</label>' +
+          '<div><label for="posX">Text X Position</label>' +
           '<select id="posX">' +
           '<option value="top">Top</option>' +
           '<option value="bottom">Bottom</option>' +
           '</select>' +
           '</div>' +
-          '<div><label for="posY">Y Position</label>' +
+          '<div><label for="posY">Text Y Position</label>' +
           '<select id="posY">' +
           '<option value="left">Left</option>' +
           '<option value="right">Right</option>' +
@@ -85,6 +85,7 @@
 
       function generateImage() {
         document.getElementById('text').className = "";
+        document.getElementById('logo').className = "small";
 
         document.getElementById('canvas').style.display = "block";
         document.getElementById('canvas').style.backgroundSize = "cover";
@@ -96,6 +97,9 @@
 
         document.getElementById('text').classList.add(article.x);
         document.getElementById('text').classList.add(article.y);
+
+        document.getElementById('logo').classList.add(article.x);
+        document.getElementById('logo').classList.add(article.y);
 
         document.getElementById('canvas').scrollIntoView();
       }

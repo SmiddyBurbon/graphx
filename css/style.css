@@ -242,7 +242,7 @@ span, label {
   opacity: 0.5;
   font-weight: 900;
   letter-spacing: 0.04em;
-  margin-bottom:   0.2rem;
+  margin-bottom: 0.2rem;
 }
 #form input {
   padding: 0.5rem;
@@ -253,6 +253,22 @@ span, label {
   text-align: center;
   width: 50%;
   margin-top: -40px;
+}
+#logo.small {
+  width: auto;
+  position: absolute;
+}
+#logo.small.top  {
+  bottom: 0;
+}
+#logo.small.bottom  {
+  top: 40px;
+}
+#logo.small.left  {
+  left: 80px;
+}
+#logo.small.right  {
+  right: 80px;
 }
 #download {
   text-align: center;
