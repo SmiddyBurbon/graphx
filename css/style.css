@@ -25,6 +25,7 @@ body {
 }
 #canvas.news {
   padding: 0;
+  background-position: center center;
 }
 #canvas.news #text {
   position: absolute;
