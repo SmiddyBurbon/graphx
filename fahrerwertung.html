@@ -12,7 +12,7 @@
       <button onclick="generateImage()">Generate image</button>
     </section>
 
-    <div id="canvas">
+    <div id="canvas" class="drivers">
       <div class="headline">
         <div id="country"></div>
         <div id="event">
@@ -36,9 +36,10 @@
         <div class="driver" id="driver9"></div>
         <div class="driver" id="driver10"></div>
         <div class="driver" id="driver11"></div>
+        <div class="driver" id="driver12"></div>
       </div>
 
-      <img id="logo" src="img/logo.png" />
+      <img id="logo" class="small" src="img/logo_small.png" />
     </div>
 
     <section id="download">
@@ -64,7 +65,7 @@
           '<div class="tablehead"><span>Position</span><span>Name</span><span>Points</span></div>'
         );
 
-        for (var i = 1; i < 12; i++) {
+        for (var i = 1; i < 13; i++) {
           document.getElementById('form').insertAdjacentHTML('beforeend', '<div class="driver' + i + 'Input"><div><input type="number" id="driver' + i + 'pos" name="driver' + i + 'pos" value=' + i + ' /></div><div><input type="text" id="driver' + i + 'name" name="driver' + i + 'name" /></div><div><input type="number" id="driver' + i + 'pts" name="driver' + i + 'pts" /></div></div>');
         }
       }
@@ -72,7 +73,7 @@
       function createObject() {
         drivers.length = 0;
 
-        for (var i = 1; i < 12; i++) {
+        for (var i = 1; i < 13; i++) {
           drivers.push({
             "position": parseInt(parseInt(document.getElementById('driver' + i + 'pos').value)),
             "name": document.getElementById('driver' + i + 'name').value,
@@ -95,13 +96,13 @@
         document.getElementById('h2').innerHTML = document.getElementById('subline').value;
         document.getElementById('country').innerHTML = eventImg;
 
-        for (var i = 1; i < 12; i++) {
+        for (var i = 1; i < 13; i++) {
           document.getElementById('driver' + i).innerHTML =
           '<div class="position">' + drivers[(i-1)].position + '</div>' +
           '<div class="person">' +
             '<img class="flag" src="img/flags/' + drivers[(i-1)].nationality + '.png">' +
             '<div class="name">' + drivers[(i-1)].name + '</div>' +
-            '<img class="team" src="img/cars/' + drivers[(i-1)].team + '.png">' +
+            '<img class="car" src="img/cars/' + drivers[(i-1)].team + '.png">' +
           '</div>' +
           '<div class="points">' + drivers[(i-1)].points + '</div>';
         }

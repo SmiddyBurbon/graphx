@@ -12,21 +12,33 @@ body {
 }
 
 :root {
-  --turquoise: #11a7bb;
-  --dark-blue: #005793;
+  --main-100: #CDFBF2;
+  --main-200: #9DF8ED;
+  --main-300: #6AEAE5;
+  --main-400: #44D0D6;
+  --main-500: #11A7BB;
+  --main-600: #0C83A0;
+  --main-700: #086386;
+  --main-800: #05476C;
+  --main-900: #033359;
 }
 #canvas {
-  background-color: var(--turquoise);
-  background-image: url('../img/bg.png');
+  background-color: var(--main-700);
   background-size: contain;
   margin: 0 auto;
-  color: #11a7bb;
+  color: var(--main-700);
   width: 1200px;
   height: 1200px;
   padding: 80px;
-  font-size: 28px;
+  font-size: 32px;
   text-align: center;
   position: relative;
+}
+#canvas.drivers {
+  background-image: url('../img/bg/bg_city_01.png');
+}
+#canvas.teams {
+  background-image: url('../img/bg/bg_city_01.png');
 }
 
 #country {
@@ -87,19 +99,18 @@ h1,h2 {
 }
 .driver > div,
 .team > div {
-  padding: 0 16px 4px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
 }
 .driver .position, .driver .points,
 .team .position, .team .points {
-  color: #fff;
-  font-family: 'Lato', monospace;
+  color: var(--main-100);
   font-weight: bold;
 }
 .driver .position,
 .team .position {
-  background-color: var(--turquoise);
+  background-color: var(--main-800);
   justify-content: center;
   width: 80px;
 }
@@ -122,13 +133,13 @@ h1,h2 {
   width: 64px;
   margin-right: 16px;
 }
-.person .team {
+.person .car {
   height: 64px;
-  margin-top: 4px;
 }
 .driver .points,
 .team .points {
-  background-color: var(--dark-blue);
+  background-color: var(--main-200);
+  color: var(--main-800);
   text-align: right;
   width: 104px;
 }
@@ -144,7 +155,7 @@ h1,h2 {
   align-items: center;
 }
 button {
-  background-color: #11a7bb;
+  background-color: var(--main-500);
   text-transform: uppercase;
   color: #fff;
   font-size: 1.25rem;
@@ -205,8 +216,30 @@ span, label {
 #logo {
   text-align: center;
   width: 50%;
-  margin-top: -40px;
 }
+#logo.small {
+  width: auto;
+  position: absolute;
+}
+#logo.small.top  {
+  bottom: 0;
+}
+#logo.small.bottom  {
+  top: 0;
+}
+#logo.small.left  {
+  left: 80px;
+}
+#logo.small.right  {
+  right: 80px;
+}
+#canvas.drivers #logo.small,
+#canvas.teams #logo.small {
+  width: 104px;
+  bottom: -64px;
+  position: relative;
+}
+
 #download {
   text-align: center;
 }

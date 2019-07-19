@@ -12,7 +12,7 @@
       <button onclick="generateImage()">Generate image</button>
     </section>
 
-    <div id="canvas">
+    <div id="canvas" class="teams">
       <div class="headline">
         <div id="country"></div>
         <div id="event">
@@ -36,9 +36,10 @@
         <div class="team" id="team9"></div>
         <div class="team" id="team10"></div>
         <div class="team" id="team11"></div>
+        <div class="team" id="team12"></div>
       </div>
 
-      <img id="logo" src="img/logo.png" />
+      <img id="logo" class="small" src="img/logo_small.png" />
     </div>
 
     <section id="download">
@@ -64,7 +65,7 @@
           '<div class="tablehead"><span>Position</span><span>Name</span><span>Points</span></div>'
         );
 
-        for (var i = 1; i < 12; i++) {
+        for (var i = 1; i < 13; i++) {
           document.getElementById('form').insertAdjacentHTML('beforeend', '<div class="team' + i + 'Input"><div><input type="number" id="team' + i + 'pos" name="team' + i + 'pos" value=' + i + ' /></div><div><input type="text" id="team' + i + 'name" name="team' + i + 'name" /></div><div><input type="number" id="team' + i + 'pts" name="team' + i + 'pts" /></div></div>');
         }
       }
@@ -72,7 +73,7 @@
       function createObject() {
         teams.length = 0;
 
-        for (var i = 1; i < 12; i++) {
+        for (var i = 1; i < 13; i++) {
           teams.push({
             "position": parseInt(i),
             "name": document.getElementById('team' + i + 'name').value,
@@ -93,13 +94,13 @@
         document.getElementById('h2').innerHTML = document.getElementById('subline').value;
         document.getElementById('country').innerHTML = eventImg;
 
-        for (var i = 1; i < 12; i++) {
+        for (var i = 1; i < 13; i++) {
           console.log(teams[(i-1)].name);
           document.getElementById('team' + i).innerHTML =
           '<div class="position">' + teams[(i-1)].position + '</div>' +
           '<div class="person">' +
             '<div class="name">' + teams[(i-1)].name + '</div>' +
-            '<img class="team" src="img/cars/' + getTeam(teams[(i-1)].name) + '.png">' +
+            '<img class="car" src="img/cars/' + getTeam(teams[(i-1)].name) + '.png">' +
           '</div>' +
           '<div class="points">' + teams[(i-1)].points + '</div>';
         }

@@ -1,7 +1,7 @@
 #overlay {
   width: 100%;
   height: 100%;
-  background-color: #033359;
+  background-color: var(--main-900);
   mix-blend-mode: multiply;
   opacity: 0.4;
   position: absolute;
@@ -24,13 +24,13 @@
   left: 80px;
   padding-left: 40px;
   text-align: left;
-  border-left: 16px solid #9DF8ED;
+  border-left: 16px solid var(--main-200);
 }
 #canvas.news #text.right {
   right: 80px;
   padding-right: 40px;
   text-align: right;
-  border-right: 16px solid #9DF8ED;
+  border-right: 16px solid var(--main-200);
 }
 #canvas.news h1, #canvas.news h2 {
   font-weight: bold;
@@ -39,26 +39,10 @@
 }
 #canvas.news h1 {
   font-size: 32px;
-  color: #9DF8ED;
+  color: var(--main-200);
 }
 #canvas.news h2 {
   font-size: 80px;
   color: #fff;
   text-transform: none;
-}
-#logo.small {
-  width: auto;
-  position: absolute;
-}
-#logo.small.top  {
-  bottom: 0;
-}
-#logo.small.bottom  {
-  top: 40px;
-}
-#logo.small.left  {
-  left: 80px;
-}
-#logo.small.right  {
-  right: 80px;
 }
