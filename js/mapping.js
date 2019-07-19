@@ -109,6 +109,8 @@ function getCountry(city) {
   else if (country.includes("monaco")) { return "mc"; }
   else if (country.includes("berlin")) { return "de"; }
   else if (country.includes("bern")) { return "ch"; }
+  else if (country.includes("swiss")) { return "ch"; }
   else if (country.includes("york")) { return "us"; }
   else if (country.includes("seoul")) { return "sk"; }
+  else if (country.includes("london")) { return "uk"; }
 }
