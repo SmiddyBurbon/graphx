@@ -29,6 +29,7 @@ function getNationality(driver) {
 
   else if (name.includes("vergne")) { return "fr"; }
   else if (name.includes("lotterer")) { return "de"; }
+  else if (name.includes("jani")) { return "ch"; }
 
   else if (name.includes("sims")) { return "uk"; }
   else if (name.includes("da costa")) { return "pt"; }
@@ -48,8 +49,8 @@ function getTeam(driver) {
   else if (name.includes("piquet")) { return "jaguar"; }
   else if (name.includes("evans")) { return "jaguar"; }
 
-  else if (name.includes("vandoorne")) { return "hwa"; }
-  else if (name.includes("paffett")) { return "hwa"; }
+  else if (name.includes("vandoorne")) { return "mercedes"; }
+  else if (name.includes("paffett")) { return "mercedes"; }
 
   else if (name.includes("günther")) { return "dragon"; }
   else if (name.includes("nasr")) { return "dragon"; }
@@ -68,7 +69,6 @@ function getTeam(driver) {
   else if (name.includes("buemi")) { return "nissan"; }
 
   else if (name.includes("vergne")) { return "techeetah"; }
-  else if (name.includes("lotterer")) { return "techeetah"; }
 
   else if (name.includes("sims")) { return "bmw"; }
   else if (name.includes("da costa")) { return "bmw"; }
@@ -76,6 +76,9 @@ function getTeam(driver) {
   else if (name.includes("ambrosio")) { return "mahindra"; }
   else if (name.includes("rosenqvist")) { return "mahindra"; }
   else if (name.includes("wehrlein")) { return "mahindra"; }
+
+  else if (name.includes("jani")) { return "porsche"; }
+  else if (name.includes("lotterer")) { return "porsche"; }
 
   else if (name.includes("techeetah")) { return "techeetah"; }
   else if (name.includes("mahindra")) { return "mahindra"; }
@@ -88,6 +91,8 @@ function getTeam(driver) {
   else if (name.includes("dragon")) { return "dragon"; }
   else if (name.includes("jaguar")) { return "jaguar"; }
   else if (name.includes("hwa")) { return "hwa"; }
+  else if (name.includes("mercedes")) { return "mercedes"; }
+  else if (name.includes("porsche")) { return "porsche"; }
 }
 
 function getCountry(city) {
@@ -105,4 +110,5 @@ function getCountry(city) {
   else if (country.includes("berlin")) { return "de"; }
   else if (country.includes("bern")) { return "ch"; }
   else if (country.includes("york")) { return "us"; }
+  else if (country.includes("seoul")) { return "sk"; }
 }
