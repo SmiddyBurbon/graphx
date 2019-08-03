@@ -21,6 +21,7 @@ body {
   --main-700: #086386;
   --main-800: #05476C;
   --main-900: #033359;
+  --lightGrey: #aaa;
 }
 #canvas {
   background-color: var(--main-700);
@@ -251,4 +252,43 @@ span, label {
 }
 #canvas {
   display: none;
+}
+
+#sortable {
+  margin: 2rem 1rem 0;
+}
+#sortable li::before {
+  content: '::';
+  font-weight: bold;
+  color: var(--main-500);
+}
+#sortable li {
+  list-style-type: none;
+  border: 1px solid var(--lightGrey);
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#sortable li .flag {
+  height: 24px;
+  margin: 0 1rem;
+  display: inline;
+}
+#sortable li span {
+  color: var(--main-900);
+  display: inline;
+  margin-bottom: 0;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+#sortable li input {
+  width: 10%;
+  align-self: flex-end;
+  text-align: right;
+}
+#sortable li:hover {
+  cursor: pointer;
 }
