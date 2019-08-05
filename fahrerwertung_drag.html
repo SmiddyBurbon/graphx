@@ -49,7 +49,7 @@
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <script type="text/javascript" src="js/canvas2image.js"></script>
     <script type="text/javascript" src="js/mapping.js"></script>
-    <script type="text/javascript" src="json/drivers_s6.js"></script>
+    <!-- <script type="text/javascript" src="json/drivers_s6.js"></script> -->
     <script type="text/javascript" src="js/download.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
@@ -59,8 +59,30 @@
 
     <script type="text/javascript">
       window.onload = function() {
-        generateForm();
+        getStandings();
       };
+
+      var drivers = [];
+
+      function SortByPosition(x,y) {
+        return x.position - y.position;
+      }
+
+      async function getStandings() {
+        let req = await new XMLHttpRequest();
+
+        req.onreadystatechange = () => {
+          if (req.readyState == XMLHttpRequest.DONE) {
+            drivers = JSON.parse(req.responseText);
+            drivers.sort(SortByPosition);
+            generateForm();
+          }
+        };
+
+        req.open("GET", "https://api.jsonbin.io/b/5d487a1589ed890b24cc439a/2", true);
+        req.setRequestHeader("secret-key", "$2a$10$zb.7WciGrkZ0z3cUhocfwOQNqUN8f1CDPzVi5WlvczORTF5OBiyt6");
+        req.send();
+      }
 
       function generateForm() {
         document.getElementById('form').insertAdjacentHTML(
@@ -74,6 +96,8 @@
 
         // Create a fragement
         var fragment = document.createDocumentFragment();
+
+        console.log(drivers);
 
         // Create a list item for each wizard
         // and append it to the list
@@ -104,10 +128,24 @@
         document.getElementById('form').appendChild(list);
 
         var el = document.getElementById('sortable');
-        var sortable = Sortable.create(el);
+        var sortable = new Sortable(el, {
+          onEnd: function(evt) {
+            console.log(evt.newIndex);
+            /* var parent = evt.parentNode;
+            var children = parent.children;
+            var i = children.length - 1;
+            for (; i >= 0; i--){
+                if (child == children[i]){
+                    break;
+                }
+            }
+            return i;
+            console.log(drivers); */
+          }
+        });
       }
 
-      function createObject() {
+      /* function createObject() {
         drivers.length = 0;
 
         for (var i = 1; i < 13; i++) {
@@ -119,9 +157,10 @@
             "team": getTeam(document.getElementById('driver' + i + 'name').value)
           });
         }
-      }
+      } */
 
       function generateImage() {
+        console.log(drivers);
         document.getElementById('canvas').style.display = "block";
         createObject();
 
