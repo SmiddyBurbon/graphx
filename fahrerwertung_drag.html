@@ -79,7 +79,7 @@
           }
         };
 
-        req.open("GET", "https://api.jsonbin.io/b/5d487a1589ed890b24cc439a/2", true);
+        req.open("GET", "https://api.jsonbin.io/b/5d487a1589ed890b24cc439a/36", true);
         req.setRequestHeader("secret-key", "$2a$10$zb.7WciGrkZ0z3cUhocfwOQNqUN8f1CDPzVi5WlvczORTF5OBiyt6");
         req.send();
       }
@@ -104,10 +104,10 @@
           }
         };
 
-        req.open("PUT", "https://api.jsonbin.io/b/5d487a1589ed890b24cc439a", true);
-        req.setRequestHeader("Content-type", "application/json");
+        req.open("PUT", "https://api.jsonbin.io/b/5d487a1589ed890b24cc439a/36", true);
         req.setRequestHeader("secret-key", "$2a$10$zb.7WciGrkZ0z3cUhocfwOQNqUN8f1CDPzVi5WlvczORTF5OBiyt6");
-        req.setRequestHeader("versioning", "true");
+        req.setRequestHeader("Content-type", "application/json");
+        req.setRequestHeader("versioning", "false");
         req.send(JSON.stringify(drivers));
       }
 
