@@ -92,11 +92,18 @@
           if (req.readyState == XMLHttpRequest.DONE) {
             drivers.forEach(function (driver) {
               if (driver.position == evt.oldIndex + 1) {
-                driver.position = evt.newIndex + 1;
+                driver.position = evt.newIndex;
               }
-              else if(driver.position < evt.oldIndex + 2) {
-                console.log(driver.name)
-                driver.position++;
+              if (evt.oldIndex > evt.newIndex) {
+                if(driver.position <= evt.oldIndex) {
+                  driver.position++;
+                  console.log(driver.name)
+                }
+              }
+              else if(evt.oldIndex < evt.newIndex) {
+                if(driver.position > evt.oldIndex + 1 && driver.position < evt.newIndex + 2) {
+                  driver.position--;
+                }
               }
             });
 
