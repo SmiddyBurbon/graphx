@@ -25,12 +25,14 @@
   padding-left: 40px;
   text-align: left;
   border-left: 16px solid var(--main-200);
+  margin-right: 80px;
 }
 #canvas.news #text.right {
   right: 80px;
   padding-right: 40px;
   text-align: right;
   border-right: 16px solid var(--main-200);
+  margin-left: 80px;
 }
 #canvas.news h1, #canvas.news h2 {
   font-weight: bold;
