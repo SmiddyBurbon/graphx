@@ -292,3 +292,6 @@ span, label {
 #sortable li:hover {
   cursor: pointer;
 }
+.dragged {
+  background-color: var(--main-200);
+}
