@@ -48,3 +48,9 @@
   color: #fff;
   text-transform: none;
 }
+#form.news > div > div {
+  margin: 1rem 0;
+}
+#form .formGroup {
+  margin: 2rem 0;
+}

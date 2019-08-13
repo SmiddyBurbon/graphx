@@ -40,27 +40,31 @@
       };
 
       function generateForm() {
+        document.getElementById('form').className = 'news';
         document.getElementById('form').insertAdjacentHTML(
           'beforeend',
-          '<div><label for="roofline">Roofline</label><input type="text" id="roofline" name="roofline" /></div>' +
-          '<div><label for="headline">Headline</label><input type="text" id="headline" name="headline" /></div>' +
-          '<div><label for="bg_image">Background Image</label><input type="file" id="bg_image" name="bg_image" /></div>' +
-          '<div><label for="posX">Text X Position</label>' +
+          '<div class="formGroup"><div><label for="roofline">Roofline</label><input type="text" id="roofline" name="roofline" /></div>' +
+          '<div><label for="headline">Headline</label><input type="text" id="headline" name="headline" /></div></div>' +
+          '<div class="formGroup"><label for="bg_image">Background Image</label><input type="file" id="bg_image" name="bg_image" /></div>' +
+          '<div class="formGroup"><div><label for="posX">Text Horizontal Position</label>' +
           '<select id="posX">' +
           '<option value="top">Top</option>' +
           '<option value="bottom">Bottom</option>' +
           '</select>' +
           '</div>' +
-          '<div><label for="posY">Text Y Position</label>' +
+          '<label for="posY">Text Vertical Position</label>' +
           '<select id="posY">' +
           '<option value="left">Left</option>' +
           '<option value="right">Right</option>' +
-          '</select>' +
+          '</select></div>' +
+          '<div class="formGroup"><label for="imageLeft">Image Horizontal Position</label>' +
+          '<input id="imgX" type="number" min="0" max="100" placeholder="0 – 100" />' +
           '</div>'
         );
       }
 
       document.getElementById('btnSubmit').addEventListener('click', readURL, true);
+
       function readURL(){
         var file = document.getElementById('bg_image').files[0];
         var reader = new FileReader();
@@ -90,6 +94,7 @@
 
         document.getElementById('canvas').style.display = "block";
         document.getElementById('canvas').style.backgroundSize = "cover";
+        document.getElementById('canvas').style.backgroundPositionX = document.getElementById('imgX').value + "%";
         createObject();
 
         document.getElementById('h1').innerHTML = article.roofline;
