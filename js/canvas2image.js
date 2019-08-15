@@ -43,8 +43,11 @@ var Canvas2Image = function () {
 		return canvas.toDataURL(type);
 	}
 
-	function saveFile (strData) {
-		document.location.href = strData;
+	function saveFile (strData, type) {
+    var link = document.createElement('a');
+    link.download = 'image.' + type;
+    link.href = strData;
+    link.click();
 	}
 
 	function genImage(strData) {
@@ -197,24 +200,30 @@ var Canvas2Image = function () {
 	 * @param {Number} [optional] png width
 	 * @param {Number} [optional] png height
 	 */
-	var saveAsImage = function (canvas, width, height, type) {
+	var saveAsImage = function (filename, canvas, width, height, type) {
 		if ($support.canvas && $support.dataURL) {
-			if (typeof canvas == "string") { canvas = document.getElementById(canvas); }
-			if (type == undefined) { type = 'png'; }
+			if (typeof canvas == "string") {
+        canvas = document.getElementById(canvas);
+      }
+			if (type == undefined) {
+        type = 'png';
+      }
 			type = fixType(type);
+      var fileExt = type.slice(6); // Here, i get the file extension by the type
+      var type = fixType(type);
 			if (/bmp/.test(type)) {
 				var data = getImageData(scaleCanvas(canvas, width, height));
 				var strData = genBitmapImage(data);
-				saveFile(makeURI(strData, downloadMime));
+				saveFile(makeURI(strData, downloadMime), fileExt);
 			} else {
 				var strData = getDataURL(canvas, type, width, height);
-				saveFile(strData.replace(type, downloadMime));
+				saveFile(strData.replace(type, downloadMime), fileExt);
 			}
 		}
 	};
 
 	var convertToImage = function (canvas, width, height, type) {
-		if ($support.canvas && $support.dataURL) {
+    if ($support.canvas && $support.dataURL) {
 			if (typeof canvas == "string") { canvas = document.getElementById(canvas); }
 			if (type == undefined) { type = 'png'; }
 			type = fixType(type);

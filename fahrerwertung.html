@@ -5,19 +5,13 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
 
-  <body>
-    <section id="input">
-      <div id="form">
-      </div>
-      <button onclick="generateImage()">Generate image</button>
-    </section>
-
+  <body class="input">
     <div id="canvas" class="drivers">
       <div class="headline">
         <div id="country"></div>
         <div id="event">
-          <h1 id="h1"></h1>
-          <h2 id="h2"></h2>
+          <h1><input id="inputH1" type="text" value="Fahrerwertung" /></h1>
+          <h2><input id="inputH2" type="text" value="E-Prix" /></h2>
         </div>
         <div id="sponsor">
           <img src="img/we_logo.svg" alt="Presented by Würth Elektronik" />
@@ -25,18 +19,6 @@
       </div>
 
       <div id="ranking">
-        <div class="driver" id="driver1"></div>
-        <div class="driver" id="driver2"></div>
-        <div class="driver" id="driver3"></div>
-        <div class="driver" id="driver4"></div>
-        <div class="driver" id="driver5"></div>
-        <div class="driver" id="driver6"></div>
-        <div class="driver" id="driver7"></div>
-        <div class="driver" id="driver8"></div>
-        <div class="driver" id="driver9"></div>
-        <div class="driver" id="driver10"></div>
-        <div class="driver" id="driver11"></div>
-        <div class="driver" id="driver12"></div>
       </div>
 
       <img id="logo" class="small" src="img/logo_small.png" />
@@ -49,65 +31,81 @@
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <script type="text/javascript" src="js/canvas2image.js"></script>
     <script type="text/javascript" src="js/mapping.js"></script>
-    <script type="text/javascript" src="js/download.js"></script>
     <script type="text/javascript">
-      var drivers = [];
-
       window.onload = function() {
         generateForm();
       };
 
       function generateForm() {
-        document.getElementById('form').insertAdjacentHTML(
-          'beforeend',
-          '<div><label for="headline">Headline</label><input type="text" id="headline" name="headline" value="Fahrerwertung" /></div>' +
-          '<div><label for="subline">E-Prix</label><input type="text" id="subline" name="subline" value=" E-Prix" /></div>' +
-          '<div class="tablehead"><span>Position</span><span>Name</span><span>Points</span></div>'
-        );
+        for (let i = 1; i < 13; i++) {
+          var div = document.createElement('div');
+          div.className = "driver";
+          div.id = "driver" + i;
 
-        for (var i = 1; i < 13; i++) {
-          document.getElementById('form').insertAdjacentHTML('beforeend', '<div class="driver' + i + 'Input"><div><input type="number" id="driver' + i + 'pos" name="driver' + i + 'pos" value=' + i + ' /></div><div><input type="text" id="driver' + i + 'name" name="driver' + i + 'name" /></div><div><input type="number" id="driver' + i + 'pts" name="driver' + i + 'pts" /></div></div>');
+          var pos = document.createElement('input');
+          pos.className = "position";
+          pos.type = "text";
+          pos.value = i;
+
+          var person = document.createElement('div');
+          person.className = "person";
+
+          var flag = document.createElement('img');
+          flag.className = "flag";
+          person.appendChild(flag);
+
+          var name = document.createElement('input');
+          name.className = "name";
+          name.placeholder = "Driver Name";
+          person.appendChild(name);
+
+          var car = document.createElement('img');
+          car.className = "car";
+          person.appendChild(car);
+
+          var points = document.createElement('input');
+          points.className = "points";
+          points.type = "text";
+          points.placeholder = "0";
+
+          document.getElementById('ranking').appendChild(div);
+          div.appendChild(pos);
+          div.appendChild(person);
+          div.appendChild(points);
         }
+        addEventListeners();
       }
 
-      function createObject() {
-        drivers.length = 0;
+      function addEventListeners() {
+        var h2 = document.getElementById('inputH2');
+        h2.addEventListener('change', function() {
+          var div = document.getElementById('country');
+          var img = document.createElement('img');
+          img.className = "flag";
+          img.id = "countryFlag";
+          img.src = "img/flags/" + getCountry(h2.value) + ".png";
+          div.appendChild(img);
+        });
 
-        for (var i = 1; i < 13; i++) {
-          drivers.push({
-            "position": parseInt(parseInt(document.getElementById('driver' + i + 'pos').value)),
-            "name": document.getElementById('driver' + i + 'name').value,
-            "points": parseInt(document.getElementById('driver' + i + 'pts').value),
-            "nationality": getNationality(document.getElementById('driver' + i + 'name').value),
-            "team": getTeam(document.getElementById('driver' + i + 'name').value)
+        for(let i = 0; i < 12; i++) {
+          let driver = document.getElementsByClassName('driver')[i].childNodes[1];
+          let flag = driver.childNodes[0];
+          let name = driver.childNodes[1];
+          let car = driver.childNodes[2];
+          name.addEventListener("change", function() {
+            flag.src = "img/flags/" + getNationality(this.value) + ".png";
+            car.src = "img/cars/" + getTeam(this.value) + ".png";
           });
         }
       }
 
-      function generateImage() {
-        document.getElementById('canvas').style.display = "block";
-        createObject();
-
-        var h1 = document.getElementById('headline').value;
-        var h2 = document.getElementById('subline').value;
-        var eventImg = '<img class="flag" src="img/flags/' + getCountry(h2) + '.png">';
-
-        document.getElementById('h1').innerHTML = document.getElementById('headline').value;
-        document.getElementById('h2').innerHTML = document.getElementById('subline').value;
-        document.getElementById('country').innerHTML = eventImg;
-
-        for (var i = 1; i < 13; i++) {
-          document.getElementById('driver' + i).innerHTML =
-          '<div class="position">' + drivers[(i-1)].position + '</div>' +
-          '<div class="person">' +
-            '<img class="flag" src="img/flags/' + drivers[(i-1)].nationality + '.png">' +
-            '<div class="name">' + drivers[(i-1)].name + '</div>' +
-            '<img class="car" src="img/cars/' + drivers[(i-1)].team + '.png">' +
-          '</div>' +
-          '<div class="points">' + drivers[(i-1)].points + '</div>';
-        }
-
-        document.getElementById('canvas').scrollIntoView();
+      function downloadImage() {
+        var canvas = document.getElementById('canvas');
+        html2canvas(canvas).then(function(canvas) {
+            canvas.id = "image";
+            document.body.appendChild(canvas);
+            Canvas2Image.saveAsPNG("fahrerwertung", document.getElementById('image'), 1200, 1200);
+        });
       }
     </script>
 

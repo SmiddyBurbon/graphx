@@ -109,25 +109,6 @@
 
         document.getElementById('canvas').scrollIntoView();
       }
-
-      // The DOM node to observe
-      const target = document.getElementById("headline");
-
-      // Callback function when changes occurs
-      function callback(mutationRecord, observer) {
-        console.log("hello");
-      }
-
-      // Create a new instance of MutationObserver with callback in params
-      const observer = new MutationObserver(callback);
-
-      // Setup config
-      const config = {
-        childList: true
-      };
-
-      // When everything is ready, we just observe our target
-      observer.observe(target, config);
     </script>
 
   </body>

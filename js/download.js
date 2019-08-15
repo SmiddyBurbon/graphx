@@ -3,11 +3,7 @@ function downloadImage(file) {
   html2canvas(document.querySelector("#canvas"), {
     allowTaint: true
   }).then(canvas => {
-    // document.body.insertAdjacentHTML('beforeend', '<p id="hint">Right Click => Save</p>');
-    // document.getElementById('canvas').style.display = "none";
-    // document.body.appendChild(canvas);
     download(canvas, file + '.png');
-    // document.getElementById('hint').scrollIntoView();
   });
 }
 
