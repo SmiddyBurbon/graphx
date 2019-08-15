@@ -11,7 +11,7 @@
         <div id="country"></div>
         <div id="event">
           <h1><input id="inputH1" type="text" value="Fahrerwertung" /></h1>
-          <h2><input id="inputH2" type="text" value="E-Prix" /></h2>
+          <h2><input id="inputH2" type="text" placeholder="E-Prix" /></h2>
         </div>
         <div id="sponsor">
           <img src="img/we_logo.svg" alt="Presented by Würth Elektronik" />
@@ -25,7 +25,7 @@
     </div>
 
     <section id="download">
-      <button id="btn-download" onclick="downloadImage('fahrerwertung')">Download image</button>
+      <button id="btn-download" onclick="downloadImage()">Download image</button>
     </section>
 
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
@@ -104,7 +104,8 @@
         html2canvas(canvas).then(function(canvas) {
             canvas.id = "image";
             document.body.appendChild(canvas);
-            Canvas2Image.saveAsPNG("fahrerwertung", document.getElementById('image'), 1200, 1200);
+            Canvas2Image.saveAsPNG(canvas, 1200, 1200);
+            canvas.style.display = "none";
         });
       }
     </script>

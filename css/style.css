@@ -319,7 +319,7 @@ span, label {
   font-size: 28px;
   font-weight: 400;
 }
-.input .driver input::placeholder {
+.input input::placeholder {
   color: var(--main-700);
   opacity: 0.5;
 }
