@@ -151,6 +151,17 @@
             car.src = "img/cars/" + getTeam(this.value) + ".png";
           });
         }
+
+        var pos = document.getElementById('driver1').childNodes[0];
+        pos.addEventListener("change", function() {
+          console.log('hey')
+          if (pos.value > 1) {
+            document.getElementById("canvas").style.backgroundImage = "url('img/bg/bg_fahrerwertung_02.jpg')";
+          }
+          else if (pos.value == 1) {
+            document.getElementById("canvas").style.backgroundImage = "url('img/bg/bg_fahrerwertung_01.jpg')";
+          }
+        })
       }
 
       function downloadImage() {
