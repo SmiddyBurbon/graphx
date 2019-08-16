@@ -335,13 +335,13 @@ span, label {
   color: var(--main-700);
   opacity: 0.5;
 }
-.input .driver .position {
+.input .position {
   background-color: var(--main-800);
   color: var(--main-100);
   text-align: center;
   width: 80px;
 }
-.input .driver .position,
-.input .driver .points {
+.input .position,
+.input .points {
   padding-top: 12px;
 }
