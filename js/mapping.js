@@ -2,41 +2,42 @@ function getNationality(driver) {
   var name = driver.toLowerCase();
 
   if (name.includes("bird")) { return "uk"; }
+  else if (name.includes("lynn")) { return "uk"; }
+  else if (name.includes("rowland")) { return "uk"; }
+  else if (name.includes("paffett")) { return "uk"; }
+  else if (name.includes("turvey")) { return "uk"; }
+  else if (name.includes("sims")) { return "uk"; }
+
   else if (name.includes("frijns")) { return "nl"; }
 
-  else if (name.includes("lynn")) { return "uk"; }
   else if (name.includes("piquet")) { return "br"; }
+  else if (name.includes("nasr")) { return "br"; }
+  else if (name.includes("grassi")) { return "br"; }
+  else if (name.includes("massa")) { return "br"; }
+
   else if (name.includes("evans")) { return "nz"; }
+  else if (name.includes("hartley")) { return "nz"; }
 
   else if (name.includes("vandoorne")) { return "be"; }
-  else if (name.includes("paffett")) { return "uk"; }
+  else if (name.includes("ambrosio")) { return "be"; }
 
   else if (name.includes("günther")) { return "de"; }
-  else if (name.includes("nasr")) { return "br"; }
+  else if (name.includes("abt")) { return "de"; }
+  else if (name.includes("lotterer")) { return "de"; }
+  else if (name.includes("wehrlein")) { return "de"; }
+  
   else if (name.includes("lopez")) { return "ar"; }
 
   else if (name.includes("dillmann")) { return "fr"; }
-  else if (name.includes("turvey")) { return "uk"; }
-
-  else if (name.includes("grassi")) { return "br"; }
-  else if (name.includes("abt")) { return "de"; }
-
-  else if (name.includes("massa")) { return "br"; }
-  else if (name.includes("mortara")) { return "ch"; }
-
-  else if (name.includes("rowland")) { return "uk"; }
-  else if (name.includes("buemi")) { return "ch"; }
-
   else if (name.includes("vergne")) { return "fr"; }
-  else if (name.includes("lotterer")) { return "de"; }
+
+  else if (name.includes("mortara")) { return "ch"; }
+  else if (name.includes("buemi")) { return "ch"; }
   else if (name.includes("jani")) { return "ch"; }
 
-  else if (name.includes("sims")) { return "uk"; }
   else if (name.includes("da costa")) { return "pt"; }
 
-  else if (name.includes("ambrosio")) { return "be"; }
   else if (name.includes("rosenqvist")) { return "se"; }
-  else if (name.includes("wehrlein")) { return "de"; }
 }
 
 function getTeam(driver) {

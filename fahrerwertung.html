@@ -33,14 +33,15 @@
     <script type="text/javascript" src="js/mapping.js"></script>
     <script type="text/javascript">
       window.onload = function() {
-        getStandings();
+        // getStandings();
+        generateForm();
       };
 
       function SortByPosition(x,y) {
         return x.position - y.position;
       }
 
-      async function getStandings() {
+      /*async function getStandings() {
         let req = await new XMLHttpRequest();
 
         req.onreadystatechange = () => {
@@ -57,6 +58,33 @@
         req.send();
       }
 
+      function updateStandings() {
+        let req = new XMLHttpRequest();
+        let json;
+
+        req.onreadystatechange = () => {
+          if (req.readyState == XMLHttpRequest.DONE) {
+            for(let i = 0; i < 12; i++) {
+              let pos = document.getElementsByClassName('driver')[i].childNodes[0];
+              let name = document.getElementsByClassName('driver')[i].childNodes[1].childNodes[1];
+              let points = document.getElementsByClassName('driver')[i].childNodes[2];
+
+              drivers.forEach(function(driver) {
+                if(driver.position == pos.value) {
+                  driver.name = name.value;
+                  driver.points = points.value;
+                }
+              });
+            }
+          }
+        };
+
+        req.open("PUT", "https://api.jsonbin.io/b/5d487a1589ed890b24cc439a", true);
+        req.setRequestHeader("secret-key", "$2a$10$zb.7WciGrkZ0z3cUhocfwOQNqUN8f1CDPzVi5WlvczORTF5OBiyt6");
+        req.setRequestHeader("Content-type", "application/json");
+        req.send(JSON.stringify(drivers));
+      }*/
+
       function generateForm() {
         for (let i = 1; i < 13; i++) {
           var div = document.createElement('div');
@@ -66,26 +94,27 @@
           var pos = document.createElement('input');
           pos.className = "position";
           pos.type = "text";
-          pos.value = drivers[i-1].position;
+          //pos.value = drivers[i-1].position;
+          pos.value = i;
 
           var person = document.createElement('div');
           person.className = "person";
 
           var flag = document.createElement('img');
           flag.className = "flag";
-          flag.src = "img/flags/" + getNationality(drivers[i-1].name) + ".png";
+          // flag.src = "img/flags/" + getNationality(drivers[i-1].name) + ".png";
           person.appendChild(flag);
 
           var name = document.createElement('input');
           name.className = "name";
           name.type = "text";
           name.placeholder = "Driver Name";
-          name.value = drivers[i-1].name;
+          //name.value = drivers[i-1].name;
           person.appendChild(name);
 
           var car = document.createElement('img');
           car.className = "car";
-          car.src = "img/cars/" + getTeam(drivers[i-1].name) + ".png";
+          // car.src = "img/cars/" + getTeam(drivers[i-1].name) + ".png";
           person.appendChild(car);
 
           var points = document.createElement('input');
@@ -127,6 +156,7 @@
       function downloadImage() {
         var canvas = document.getElementById('canvas');
         html2canvas(canvas).then(function(canvas) {
+            // updateStandings();
             canvas.id = "image";
             document.body.appendChild(canvas);
             Canvas2Image.saveAsPNG(canvas, 1200, 1200);
