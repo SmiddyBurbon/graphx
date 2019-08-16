@@ -313,7 +313,8 @@ span, label {
 .input #canvas {
   display: block;
 }
-.input input {
+.input input,
+.input textarea {
   -webkit-appearance: none;
   border: none;
   outline: none;
@@ -325,6 +326,7 @@ span, label {
   text-transform: uppercase;
   font-weight: 900;
   font-size: 32px;
+  display: inline-block;
 }
 .input h1 input {
   font-size: 40px;

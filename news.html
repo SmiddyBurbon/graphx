@@ -6,21 +6,21 @@
     <link rel="stylesheet" type="text/css" href="css/news.css" />
   </head>
 
-  <body>
+  <body class="input">
     <section id="input">
-      <div id="form">
+      <div id="form" class="news">
       </div>
-      <button id="btnSubmit" onclick="generateImage()">Generate image</button>
+      <!-- <button id="btnSubmit" onclick="generateImage()">Generate image</button> -->
     </section>
 
     <div id="canvas" class="news">
       <div id="overlay"></div>
-      <div id="text">
+      <div id="text" class="top left">
         <h1 id="h1"></h1>
         <h2 id="h2"></h2>
       </div>
 
-      <img id="logo" class="small" src="img/logo_small.png" />
+      <img id="logo" class="small top left" src="img/logo_small.png" />
     </div>
 
     <section id="download">
@@ -30,21 +30,40 @@
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <script type="text/javascript" src="js/canvas2image.js"></script>
     <script type="text/javascript" src="js/mapping.js"></script>
-    <script type="text/javascript" src="js/download.js"></script>
     <script type="text/javascript">
-      var article = {};
-      var bgImage = {};
-
       window.onload = function() {
         generateForm();
       };
 
+      function autosize(){
+        var el = this;
+        setTimeout(function(){
+          el.style.cssText = 'height:auto; padding:0';
+          // for box-sizing other than "content-box" use:
+          // el.style.cssText = '-moz-box-sizing:content-box';
+          el.style.cssText = 'height:' + el.scrollHeight + 'px';
+          el.style.resize = "none";
+        },0);
+      }
+
       function generateForm() {
-        document.getElementById('form').className = 'news';
+        var roofline = document.createElement('textarea');
+        roofline.placeholder = "Roofline";
+        roofline.style.resize = "none";
+        roofline.addEventListener('keydown', autosize);
+
+        var headline = document.createElement('textarea');
+        headline.placeholder = "Headline";
+        headline.style.resize = "none";
+        headline.addEventListener('keydown', autosize);
+
+        var h1 = document.getElementById('h1');
+        var h2 = document.getElementById('h2');
+        h1.appendChild(roofline);
+        h2.appendChild(headline);
+
         document.getElementById('form').insertAdjacentHTML(
           'beforeend',
-          '<div class="formGroup"><div><label for="roofline">Roofline</label><input type="text" id="roofline" name="roofline" /></div>' +
-          '<div><label for="headline">Headline</label><input type="text" id="headline" name="headline" /></div></div>' +
           '<div class="formGroup"><label for="bg_image">Background Image</label><input type="file" id="bg_image" name="bg_image" /></div>' +
           '<div class="formGroup"><div><label for="posX">Text Horizontal Position</label>' +
           '<select id="posX">' +
@@ -61,9 +80,25 @@
           '<input id="imgX" type="number" min="0" max="100" placeholder="0 – 100" />' +
           '</div>'
         );
+        addEventListeners();
       }
 
-      document.getElementById('btnSubmit').addEventListener('click', readURL, true);
+      function addEventListeners() {
+        var posX = document.getElementById('posX');
+        var posY = document.getElementById('posY');
+
+        posX.addEventListener('change', function() {
+          document.getElementById('text').className = posX.value + " " + posY.value;
+          document.getElementById('logo').className = "small " + posX.value + " " + posY.value;
+        });
+
+        posY.addEventListener('change', function() {
+          document.getElementById('text').className = posX.value + " " + posY.value;
+          document.getElementById('logo').className = "small " + posX.value + " " + posY.value;
+        });
+
+        // document.getElementById('btnSubmit').addEventListener('click', readURL, true);
+      }
 
       function readURL(){
         var file = document.getElementById('bg_image').files[0];

@@ -6,6 +6,9 @@
   opacity: 0.4;
   position: absolute;
 }
+.input #canvas {
+  display: block;
+}
 #canvas.news {
   padding: 0;
   background-position: center center;
@@ -22,31 +25,49 @@
 }
 #canvas.news #text.left {
   left: 80px;
-  padding-left: 40px;
+  padding-left: 16px;
   text-align: left;
   border-left: 16px solid var(--main-200);
   margin-right: 80px;
 }
 #canvas.news #text.right {
   right: 80px;
-  padding-right: 40px;
+  padding-right: 16px;
   text-align: right;
   border-right: 16px solid var(--main-200);
   margin-left: 80px;
 }
-#canvas.news h1, #canvas.news h2 {
+#canvas.news #text.left textarea {
+  padding-left: 24px;
+}
+#canvas.news #text.right textarea {
+  padding-right: 24px;
+}
+#canvas.news #text.right input {
+  text-align: right;
+}
+#canvas.news h1 textarea, #canvas.news h2 textarea {
   font-weight: bold;
   font-style: italic;
   letter-spacing: 0;
 }
-#canvas.news h1 {
+#canvas.news h1 textarea::placeholder, #canvas.news h2 textarea::placeholder {
+  opacity: 0.5;
+}
+#canvas.news h1 textarea {
   font-size: 32px;
   color: var(--main-200);
 }
-#canvas.news h2 {
+#canvas.news h1 textarea::placeholder {
+  color: var(--main-200);
+}
+#canvas.news h2 textarea {
   font-size: 80px;
   color: #fff;
   text-transform: none;
+}
+#canvas.news h2 textarea::placeholder {
+  color: #fff;
 }
 #form.news > div > div {
   margin: 1rem 0;
