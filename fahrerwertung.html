@@ -24,7 +24,7 @@
       <img id="logo" class="small" src="img/logo_small.png" />
     </div>
 
-    <section id="download">
+    <section class="download">
       <button id="btn-download" onclick="downloadImage()">Download image</button>
     </section>
 
@@ -56,6 +56,7 @@
 
           var name = document.createElement('input');
           name.className = "name";
+          name.type = "text";
           name.placeholder = "Driver Name";
           person.appendChild(name);
 
