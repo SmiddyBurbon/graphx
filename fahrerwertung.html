@@ -33,8 +33,29 @@
     <script type="text/javascript" src="js/mapping.js"></script>
     <script type="text/javascript">
       window.onload = function() {
-        generateForm();
+        getStandings();
       };
+
+      function SortByPosition(x,y) {
+        return x.position - y.position;
+      }
+
+      async function getStandings() {
+        let req = await new XMLHttpRequest();
+
+        req.onreadystatechange = () => {
+          if (req.readyState == XMLHttpRequest.DONE) {
+
+            drivers = JSON.parse(req.responseText);
+            drivers.sort(SortByPosition);
+            generateForm();
+          }
+        };
+
+        req.open("GET", "https://api.jsonbin.io/b/5d487a1589ed890b24cc439a/latest", true);
+        req.setRequestHeader("secret-key", "$2a$10$zb.7WciGrkZ0z3cUhocfwOQNqUN8f1CDPzVi5WlvczORTF5OBiyt6");
+        req.send();
+      }
 
       function generateForm() {
         for (let i = 1; i < 13; i++) {
@@ -45,23 +66,26 @@
           var pos = document.createElement('input');
           pos.className = "position";
           pos.type = "text";
-          pos.value = i;
+          pos.value = drivers[i-1].position;
 
           var person = document.createElement('div');
           person.className = "person";
 
           var flag = document.createElement('img');
           flag.className = "flag";
+          flag.src = "img/flags/" + getNationality(drivers[i-1].name) + ".png";
           person.appendChild(flag);
 
           var name = document.createElement('input');
           name.className = "name";
           name.type = "text";
           name.placeholder = "Driver Name";
+          name.value = drivers[i-1].name;
           person.appendChild(name);
 
           var car = document.createElement('img');
           car.className = "car";
+          car.src = "img/cars/" + getTeam(drivers[i-1].name) + ".png";
           person.appendChild(car);
 
           var points = document.createElement('input');
