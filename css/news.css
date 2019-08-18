@@ -38,6 +38,9 @@
   border-right: 16px solid var(--main-200);
   margin-left: 80px;
 }
+#canvas.news #text textarea {
+  width: 100%;
+}
 #canvas.news #text.left textarea {
   padding-left: 24px;
   text-align: left;
