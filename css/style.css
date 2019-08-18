@@ -156,7 +156,7 @@ h1,h2 {
 }
 
 #input {
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   width: 50%;
   margin: 0 auto;
   padding: 3rem 0;
@@ -185,32 +185,7 @@ button:hover {
 #form {
   width: 80%;
 }
-#form > div {
-  margin: 0.2rem 1rem;
-}
-#form > div:nth-of-type(0n+2) {
-  margin-top: 1rem;
-}
-#form .tablehead {
-  margin-top: 2rem;
-}
-#form > div[class*="driver"], #form .tablehead,
-#form > div[class*="team"], #form .tablehead {
-  display: grid;
-  grid-template-columns: 0.25fr 1fr 0.25fr;
-}
-#form > div > div,
-#form .tablehead span {
-  margin: 0 0.5rem;
-}
-#form > div > div:first-of-type,
-#form .tablehead span:first-of-type {
-  margin-left: 0;
-}
-#form > div > div:last-of-type,
-#form .tablehead span:last-of-type {
-  margin-right: 0;
-}
+
 span, label, input {
   display: block;
 }
