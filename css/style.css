@@ -48,6 +48,7 @@ body {
 #canvas.quali {
   width: 1920px;
   height: 1080px;
+  background-image: url('../img/bg/bg_city_01.png');
   /*transform: scale(0.5);*/
   transform-origin: top left;
 }
