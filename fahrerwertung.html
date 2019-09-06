@@ -26,6 +26,7 @@
 
     <section class="download">
       <button id="btn-download" onclick="downloadImage()">Download image</button>
+      <p class="hint">If the download doesn't start, right click the generated image below to save it on your device.</p>
     </section>
 
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
@@ -154,7 +155,6 @@
 
         var pos = document.getElementById('driver1').childNodes[0];
         pos.addEventListener("change", function() {
-          console.log('hey')
           if (pos.value > 1) {
             document.getElementById("canvas").style.backgroundImage = "url('img/bg/bg_fahrerwertung_02.jpg')";
           }

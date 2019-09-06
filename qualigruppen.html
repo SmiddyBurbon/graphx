@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body class="input">
+    <div id="canvas" class="quali">
+      <div class="headline">
+        <div id="country"></div>
+        <div id="event">
+          <h1><input id="inputH1" type="text" value="Qualigruppen" /></h1>
+          <h2><input id="inputH2" type="text" placeholder="E-Prix" /></h2>
+        </div>
+      </div>
+
+      <div id="ranking">
+      </div>
+
+      <!-- <img id="logo" class="small" src="img/logo_small.png" /> -->
+    </div>
+
+    <section class="download">
+      <button id="btn-download" onclick="downloadImage()">Download image</button>
+      <p class="hint">If the download doesn't start, right click the generated image below to save it on your device.</p>
+    </section>
+
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <script type="text/javascript" src="js/canvas2image.js"></script>
+    <script type="text/javascript" src="js/mapping.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        generateForm();
+      };
+
+      function SortByPosition(x,y) {
+        return x.position - y.position;
+      }
+
+      function generateForm() {
+        for(let i = 1; i < 5; i++) {
+          var column = document.createElement('div');
+          column.className = "column";
+
+          var groupHeader = document.createElement('div');
+          groupHeader.className = "groupHeader";
+          groupHeader.innerHTML = "Gruppe " + i;
+
+          column.appendChild(groupHeader);
+
+          for (let i = 0; i < 6; i++) {
+            var div = document.createElement('div');
+            div.className = "driver";
+            div.id = "driver" + i;
+
+            var person = document.createElement('div');
+            person.className = "person";
+
+            var flag = document.createElement('img');
+            flag.className = "flag";
+
+            var name = document.createElement('input');
+            name.className = "name";
+            name.type = "text";
+            name.placeholder = "Driver Name";
+
+            person.appendChild(flag);
+            person.appendChild(name);
+            div.appendChild(person);
+
+            var team = document.createElement('input');
+            team.className = "team";
+            team.type = "team";
+            team.placeholder = "Team Name";
+            div.appendChild(team);
+            column.appendChild(div);
+          }
+          document.getElementById('ranking').appendChild(column);
+        }
+        addEventListeners();
+      }
+
+      function addEventListeners() {
+        var h2 = document.getElementById('inputH2');
+        h2.addEventListener('change', function() {
+          var div = document.getElementById('country');
+          var img = document.createElement('img');
+          img.className = "flag";
+          img.id = "countryFlag";
+          img.src = "img/flags/" + getCountry(h2.value) + ".png";
+          div.appendChild(img);
+        });
+
+        for(let i = 0; i < 4; i++) {
+          let column = document.getElementsByClassName('column')[i];
+          console.log(column);
+          for(let i = 0; i < 6; i++) {
+            let driver = document.getElementsByClassName('driver')[i].childNodes[0];
+            let flag = driver.childNodes[0];
+            let name = driver.childNodes[1];
+            let team = document.getElementsByClassName('driver')[i].childNodes[1];
+            name.addEventListener("change", function() {
+              flag.src = "img/flags/" + getNationality(this.value) + ".png";
+              team.value = getFullTeam(this.value);
+            });
+          }
+        }
+      }
+
+      function downloadImage() {
+        var canvas = document.getElementById('canvas');
+        html2canvas(canvas).then(function(canvas) {
+            // updateStandings();
+            canvas.id = "image";
+            document.body.appendChild(canvas);
+            Canvas2Image.saveAsPNG(canvas, 1920, 1080);
+            // canvas.style.display = "none";
+        });
+      }
+    </script>
+
+  </body>
+</html>

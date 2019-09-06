@@ -45,6 +45,12 @@ body {
 #canvas.results {
   background-image: url('../img/bg/bg_city_01.png');
 }
+#canvas.quali {
+  width: 1920px;
+  height: 1080px;
+  /*transform: scale(0.5);*/
+  transform-origin: top left;
+}
 
 #country {
   margin-right: 24px;
@@ -232,9 +238,15 @@ span, label {
 #btn-download {
   text-align: center;
   display: block;
-  margin: 4rem auto;
+  margin: 4rem auto 0;
   /*background-color: var(--veryLightGrey);
   padding: 1rem 0;*/
+}
+.hint {
+  text-align: center;
+  width: 61.8vw;
+  color: var(--lightGrey);
+  margin: 1rem auto 4rem;
 }
 #canvas {
   display: none;
@@ -344,4 +356,45 @@ span, label {
   text-decoration: none;
   font-weight: 900;
   letter-spacing: 0.04rem;
+}
+
+#canvas.quali .column {
+  width: 410px;
+  margin: 0 20px;
+  float: left;
+}
+#canvas.quali .column:first-of-type {
+  margin-left: 0;
+}
+#canvas.quali .column:last-of-type {
+  margin-right: 0;
+}
+#canvas.quali .groupHeader {
+  height: 64px;
+  background-color: var(--main-800);
+  color: var(--main-200);
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 16px 24px;
+  margin-bottom: 4px;
+}
+#canvas.quali .driver {
+  height: 104px;
+  flex-direction: column;
+  padding: 16px 16px;
+}
+#canvas.quali .team {
+  margin: 0;
+  font-weight: 400;
+  font-size: 24px;
+  padding: 0;
+}
+#canvas.quali .person {
+  padding: 0;
+}
+#canvas.quali .person .flag {
+  height: 30px;
+  width: 48px;
+  float: left;
 }
