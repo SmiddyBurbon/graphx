@@ -26,7 +26,8 @@ body {
 }
 #canvas {
   background-color: var(--main-700);
-  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0 auto;
   color: var(--main-700);
   width: 1200px;

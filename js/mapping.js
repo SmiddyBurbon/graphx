@@ -133,4 +133,5 @@ function getCountry(city) {
   else if (country.includes("york")) { return "us"; }
   else if (country.includes("seoul")) { return "sk"; }
   else if (country.includes("london")) { return "uk"; }
+  else if (country.includes("jakarta")) { return "in"; }
 }
