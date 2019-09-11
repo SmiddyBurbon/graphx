@@ -9,6 +9,7 @@ function getNationality(driver) {
   else if (name.includes("sims")) { return "uk"; }
 
   else if (name.includes("frijns")) { return "nl"; }
+  else if (name.includes("vries")) { return "nl"; }
 
   else if (name.includes("piquet")) { return "br"; }
   else if (name.includes("nasr")) { return "br"; }
@@ -51,7 +52,7 @@ function getTeam(driver) {
   else if (name.includes("evans")) { return "jaguar"; }
 
   else if (name.includes("vandoorne")) { return "mercedes"; }
-  else if (name.includes("paffett")) { return "mercedes"; }
+  else if (name.includes("vries")) { return "mercedes"; }
 
   else if (name.includes("hartley")) { return "dragon"; }
   else if (name.includes("lopez")) { return "dragon"; }
