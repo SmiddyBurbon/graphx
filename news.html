@@ -234,9 +234,9 @@
             canvas.getContext('2d').drawImage(image, 0, 0, w, h);
 
             if (file.type == "image/jpeg") {
-               var dataURL = canvas.toDataURL("image/jpeg", 1.0);
+              var dataURL = canvas.toDataURL("image/jpeg", 1.0);
             } else {
-               var dataURL = canvas.toDataURL("image/png");
+              var dataURL = canvas.toDataURL("image/png");
             }
             document.getElementById('bg_image').value = dataURL;
           }
