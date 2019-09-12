@@ -94,6 +94,8 @@
           name.addEventListener("change", function() {
             flag.src = "img/flags/" + getNationality(this.value) + ".png";
             car.src = "img/cars/" + getTeam(this.value) + ".png";
+            // autocomplete(name, drivers);
+            console.log(this.value);
           });
         }
       }
