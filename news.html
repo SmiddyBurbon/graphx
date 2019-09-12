@@ -30,20 +30,24 @@
       <p class="hint">If the download doesn't start, right click the generated image below to save it on your device.</p>
     </section>
 
+    <div id="exportable"></div>
+
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <script type="text/javascript" src="js/canvas2image.js"></script>
     <script type="text/javascript" src="js/mapping.js"></script>
     <script type="text/javascript">
       window.onload = function() {
         generateForm();
-        // resizeCanvas();
+        resizeCanvas();
       };
 
       function resizeCanvas() {
         var canvas = document.getElementById('canvas');
         var preview = document.getElementById('preview');
-        var factor = (preview.offsetWidth / document.body.offsetWidth);
-        canvas.style.transform = "scale(0.3, 0.3)";
+        var factor = (preview.offsetWidth - 160) / canvas.offsetWidth;
+        canvas.style.transform = 'scale(' + factor + ')';
+
+        canvas.style.marginBottom = ((1200 - (1200 * factor)) * -1) + 'px';
       }
 
       function autosize(){
@@ -251,11 +255,22 @@
         }
       }
 
-      function downloadImage() {
+      function cloneCanvas() {
         var canvas = document.getElementById('canvas');
+        var clone = canvas.cloneNode(true);
+
+        var exportable = document.getElementById('exportable');
+        exportable.appendChild(clone);
+
+        clone.style.transform = 'scale(1)';
+        clone.style.margin = "0";
+      }
+
+      function downloadImage() {
+        cloneCanvas();
+        var canvas = document.getElementById('exportable');
         html2canvas(canvas).then(function(canvas) {
-            canvas.id = "image";
-            document.body.appendChild(canvas);
+            // document.body.appendChild(canvas);
             Canvas2Image.saveAsPNG(canvas, 1200, 1200);
             // canvas.style.display = "none";
         });

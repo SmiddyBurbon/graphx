@@ -8,6 +8,7 @@
 }
 .input #canvas {
   display: block;
+  margin-left: 80px;
 }
 #canvas.news {
   padding: 0;
@@ -94,7 +95,7 @@ body.input {
   padding: 0;
 }
 .input #input {
-  width: 1200px;
+  width: calc(100vw - 160px);
   margin: 0 auto;
 }
 .input #input #form {

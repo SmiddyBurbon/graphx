@@ -36,6 +36,7 @@ body {
   font-size: 32px;
   text-align: center;
   position: relative;
+  transform-origin: top left;
 }
 #canvas.drivers {
   background-image: url('../img/bg/bg_fahrerwertung_01.jpg');
@@ -399,4 +400,10 @@ span, label {
   height: 30px;
   width: 48px;
   float: left;
+}
+
+#exportable {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
 }
