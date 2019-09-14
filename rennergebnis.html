@@ -25,7 +25,7 @@
     </section>
 
     <section class="download">
-      <button id="btn-download" onclick="downloadImage()">Download image</button>
+      <button id="btn-download" onclick="downloadImage(1200, 1200)">Download image</button>
       <p class="hint">If the download doesn't start, right click the generated image below to save it on your device.</p>
     </section>
 
@@ -33,6 +33,7 @@
     <script type="text/javascript" src="js/canvas2image.js"></script>
     <script type="text/javascript" src="js/mapping.js"></script>
     <script type="text/javascript" src="js/resizecanvas.js"></script>
+    <script type="text/javascript" src="js/download.js"></script>
     <script type="text/javascript">
       window.onload = function() {
         generateForm();
@@ -103,16 +104,6 @@
             console.log(this.value);
           });
         }
-      }
-
-      function downloadImage() {
-        var canvas = document.getElementById('canvas');
-        html2canvas(canvas).then(function(canvas) {
-            canvas.id = "image";
-            // document.body.appendChild(canvas);
-            Canvas2Image.saveAsPNG(canvas, 1200, 1200);
-            // canvas.style.display = "none";
-        });
       }
     </script>
 

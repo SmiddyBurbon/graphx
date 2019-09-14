@@ -1,9 +1,11 @@
-function downloadImage(file) {
-
-  html2canvas(document.querySelector("#canvas"), {
-    allowTaint: true
-  }).then(canvas => {
-    download(canvas, file + '.png');
+function downloadImage(width, height) {
+  var canvas = document.getElementById('canvas');
+  html2canvas(canvas).then(function(canvas) {
+      // updateStandings();
+      canvas.id = "image";
+      // document.body.appendChild(canvas);
+      Canvas2Image.saveAsPNG(canvas, width, height);
+      // canvas.style.display = "none";
   });
 }
 
