@@ -102,18 +102,18 @@ function getFullTeam(driver) {
   var team = getTeam(driver);
 
   if (team.includes("techeetah")) { return "DS Techeetah"; }
-  else if (team.includes("mahindra")) { return "Mahindra Racing"; }
-  else if (team.includes("virgin")) { return "Envision Virgin Racing"; }
-  else if (team.includes("nissan")) { return "Nissan e.Dams"; }
-  else if (team.includes("bmw")) { return "BMW i Andretti Motorsport"; }
-  else if (team.includes("audi")) { return "Audi Sport Abt Schaeffler"; }
-  else if (team.includes("nio")) { return "NIO Formula E Team"; }
-  else if (team.includes("venturi")) { return "Venturi Formula E Team"; }
-  else if (team.includes("dragon")) { return "GEOX Dragon"; }
-  else if (team.includes("jaguar")) { return "Panasonic Jaguar Racing"; }
-  else if (team.includes("hwa")) { return "HWA Racelab"; }
-  else if (team.includes("mercedes")) { return "Mercedes EQ Formula E Team"; }
-  else if (team.includes("porsche")) { return "Porsche Formula E Team"; }
+  else if (team.includes("mahindra")) { return "Mahindra"; }
+  else if (team.includes("virgin")) { return "Virgin"; }
+  else if (team.includes("nissan")) { return "Nissan"; }
+  else if (team.includes("bmw")) { return "BMW"; }
+  else if (team.includes("audi")) { return "Audi"; }
+  else if (team.includes("nio")) { return "NIO"; }
+  else if (team.includes("venturi")) { return "Venturi"; }
+  else if (team.includes("dragon")) { return "Dragon"; }
+  else if (team.includes("jaguar")) { return "Jaguar"; }
+  else if (team.includes("hwa")) { return "HWA"; }
+  else if (team.includes("mercedes")) { return "Mercedes"; }
+  else if (team.includes("porsche")) { return "Porsche"; }
 }
 
 function getCountry(city) {
