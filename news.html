@@ -249,27 +249,6 @@
         else{
         }
       }
-
-      function cloneCanvas() {
-        var canvas = document.getElementById('canvas');
-        var clone = canvas.cloneNode(true);
-
-        var exportable = document.getElementById('exportable');
-        exportable.appendChild(clone);
-
-        clone.style.transform = 'scale(1)';
-        clone.style.margin = "0";
-      }
-
-      function downloadImage() {
-        cloneCanvas();
-        var canvas = document.getElementById('exportable');
-        html2canvas(canvas).then(function(canvas) {
-            // document.body.appendChild(canvas);
-            Canvas2Image.saveAsPNG(canvas, 1200, 1200);
-            // canvas.style.display = "none";
-        });
-      }
     </script>
 
   </body>

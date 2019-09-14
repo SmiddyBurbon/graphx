@@ -1,5 +1,17 @@
-function downloadImage(width, height) {
+function cloneCanvas() {
   var canvas = document.getElementById('canvas');
+  var clone = canvas.cloneNode(true);
+
+  var exportable = document.getElementById('exportable');
+  exportable.appendChild(clone);
+
+  clone.style.transform = 'scale(1)';
+  clone.style.margin = "0";
+}
+
+function downloadImage(width, height) {
+  cloneCanvas();
+  var canvas = document.getElementById('exportable');
   html2canvas(canvas).then(function(canvas) {
       // updateStandings();
       canvas.id = "image";
