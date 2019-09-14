@@ -2,27 +2,30 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
 
   <body class="input">
-    <div id="canvas" class="drivers">
-      <div class="headline">
-        <div id="country"></div>
-        <div id="event">
-          <h1><input id="inputH1" type="text" value="Teamwertung" /></h1>
-          <h2><input id="inputH2" type="text" placeholder="E-Prix" /></h2>
+    <section id="preview">
+      <div id="canvas" class="drivers">
+        <div class="headline">
+          <div id="country"></div>
+          <div id="event">
+            <h1><input id="inputH1" type="text" value="Teamwertung" /></h1>
+            <h2><input id="inputH2" type="text" placeholder="E-Prix" /></h2>
+          </div>
+          <div id="sponsor">
+            <img src="img/we_logo.svg" alt="Presented by Würth Elektronik" />
+          </div>
         </div>
-        <div id="sponsor">
-          <img src="img/we_logo.svg" alt="Presented by Würth Elektronik" />
+
+        <div id="ranking">
         </div>
-      </div>
 
-      <div id="ranking">
+        <img id="logo" class="small" src="img/logo_small.png" />
       </div>
-
-      <img id="logo" class="small" src="img/logo_small.png" />
-    </div>
+    </section>
 
     <section class="download">
       <button id="btn-download" onclick="downloadImage()">Download image</button>
@@ -32,9 +35,11 @@
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <script type="text/javascript" src="js/canvas2image.js"></script>
     <script type="text/javascript" src="js/mapping.js"></script>
+    <script type="text/javascript" src="js/resizecanvas.js"></script>
     <script type="text/javascript">
       window.onload = function() {
         generateForm();
+        resizeCanvas(1200);
       };
 
       function generateForm() {
@@ -99,9 +104,9 @@
         var canvas = document.getElementById('canvas');
         html2canvas(canvas).then(function(canvas) {
             canvas.id = "image";
-            document.body.appendChild(canvas);
+            // document.body.appendChild(canvas);
             Canvas2Image.saveAsPNG(canvas, 1200, 1200);
-            canvas.style.display = "none";
+            // canvas.style.display = "none";
         });
       }
     </script>
