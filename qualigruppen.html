@@ -2,24 +2,28 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
 
   <body class="input">
-    <div id="canvas" class="quali">
-      <div class="headline">
-        <div id="country"></div>
-        <div id="event">
-          <h1><input id="inputH1" type="text" value="Qualifying-Gruppen" /></h1>
-          <h2><input id="inputH2" type="text" placeholder="E-Prix" /></h2>
+    <section id="preview">
+      <div id="canvas" class="quali">
+        <div class="headline">
+          <div id="country"></div>
+          <div id="event">
+            <h1><input id="inputH1" type="text" value="Qualifying-Gruppen" /></h1>
+            <h2><input id="inputH2" type="text" placeholder="E-Prix" /></h2>
+          </div>
         </div>
-      </div>
 
-      <div id="ranking">
-      </div>
+        <div id="ranking">
+        </div>
 
-      <!-- <img id="logo" class="small" src="img/logo_small.png" /> -->
-    </div>
+        <!-- <img id="logo" class="small" src="img/logo_small.png" /> -->
+      </div>
+    </section>
 
     <section class="download">
       <button id="btn-download" onclick="downloadImage()">Download image</button>
@@ -29,9 +33,11 @@
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <script type="text/javascript" src="js/canvas2image.js"></script>
     <script type="text/javascript" src="js/mapping.js"></script>
+    <script type="text/javascript" src="js/resizecanvas.js"></script>
     <script type="text/javascript">
       window.onload = function() {
         generateForm();
+        resizeCanvas(1920);
       };
 
       function SortByPosition(x,y) {
@@ -96,10 +102,10 @@
           let column = document.getElementsByClassName('column')[i];
           console.log(column);
           for(let i = 0; i < 6; i++) {
-            let driver = document.getElementsByClassName('driver')[i].childNodes[0];
+            let driver = column.getElementsByClassName('driver')[i].childNodes[0];
             let flag = driver.childNodes[0];
             let name = driver.childNodes[1];
-            let team = document.getElementsByClassName('driver')[i].childNodes[1];
+            let team = column.getElementsByClassName('driver')[i].childNodes[1];
             name.addEventListener("change", function() {
               flag.src = "img/flags/" + getNationality(this.value) + ".png";
               team.value = getFullTeam(this.value);
@@ -107,6 +113,10 @@
           }
         }
       }
+
+      window.addEventListener("resize", function() {
+        resizeCanvas(1080);
+      });
 
       function downloadImage() {
         var canvas = document.getElementById('canvas');

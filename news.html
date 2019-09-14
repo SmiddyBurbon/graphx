@@ -37,20 +37,12 @@
     <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <script type="text/javascript" src="js/canvas2image.js"></script>
     <script type="text/javascript" src="js/mapping.js"></script>
+    <script type="text/javascript" src="js/resizecanvas.js"></script>
     <script type="text/javascript">
       window.onload = function() {
         generateForm();
-        resizeCanvas();
+        resizeCanvas(1200);
       };
-
-      function resizeCanvas() {
-        var canvas = document.getElementById('canvas');
-        var preview = document.getElementById('preview');
-        var factor = (preview.offsetWidth - 80) / canvas.offsetWidth;
-        canvas.style.transform = 'scale(' + factor + ')';
-
-        canvas.style.marginBottom = ((1200 - (1200 * factor)) * -1) + 'px';
-      }
 
       function autosize(){
         var el = this;
