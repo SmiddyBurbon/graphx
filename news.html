@@ -237,6 +237,7 @@
             } else {
               var dataURL = canvas.toDataURL("image/png");
             }
+            console.log(dataURL.length);
             document.getElementById('bg_image').value = dataURL;
           }
           image.src = readerEvent.target.result;

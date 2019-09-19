@@ -3,6 +3,11 @@ function cloneCanvas() {
   var clone = canvas.cloneNode(true);
 
   var exportable = document.getElementById('exportable');
+  var child = exportable.lastElementChild;
+  while (child) {
+      exportable.removeChild(child);
+      child = exportable.lastElementChild;
+  }
   exportable.appendChild(clone);
 
   clone.style.transform = 'scale(1)';
