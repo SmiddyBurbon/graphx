@@ -1,3 +1,11 @@
+var fileSaver = document.createElement('script');
+fileSaver.src = 'FileSaver.js';
+document.head.appendChild(fileSaver);
+
+var toBlob = document.createElement('script');
+toBlob.src = 'canvas-toBlob.js';
+document.head.appendChild(toBlob);
+
 function cloneCanvas() {
   var canvas = document.getElementById('canvas');
   var clone = canvas.cloneNode(true);
@@ -17,6 +25,11 @@ function cloneCanvas() {
 function downloadImage(width, height) {
   cloneCanvas();
   var canvas = document.getElementById('exportable');
+
+  /*canvas.toBlob(function(blob) {
+      saveAs(blob, "image.png");
+  });*/
+
   html2canvas(canvas).then(function(canvas) {
       // updateStandings();
       canvas.id = "image";

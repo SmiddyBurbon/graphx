@@ -40,6 +40,12 @@ var Canvas2Image = function () {
 
 	function getDataURL (canvas, type, width, height) {
 		canvas = scaleCanvas(canvas, width, height);
+    var compressed = LZString.compress(canvas.toDataURL(type));
+    var decompressed = LZString.decompress(canvas.toDataURL(type));
+    console.log(canvas.toDataURL(type));
+    console.log(decompressed);
+		// return decompressed;
+    // return LZString.compress(canvas.toDataURL(type));
 		return canvas.toDataURL(type);
 	}
 
@@ -217,8 +223,12 @@ var Canvas2Image = function () {
 				saveFile(makeURI(strData, downloadMime), fileExt);
 			} else {
 				var strData = getDataURL(canvas, type, width, height);
-        console.log(LZString.compress(strData));
-				saveFile(strData.replace(type, downloadMime), fileExt);
+        // strData = LZString.compress(strData);
+        /* var compressed = LZString.compress(strData);
+        console.log(strData);
+        console.log(compressed); */
+				// saveFile(strData.replace(type, downloadMime), fileExt);
+				saveFile(strData, fileExt);
 			}
 		}
 	};
