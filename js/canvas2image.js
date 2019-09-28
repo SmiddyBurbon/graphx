@@ -217,6 +217,7 @@ var Canvas2Image = function () {
 				saveFile(makeURI(strData, downloadMime), fileExt);
 			} else {
 				var strData = getDataURL(canvas, type, width, height);
+        console.log(LZString.compress(strData));
 				saveFile(strData.replace(type, downloadMime), fileExt);
 			}
 		}

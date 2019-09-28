@@ -39,6 +39,8 @@
     <script type="text/javascript" src="js/mapping.js"></script>
     <script type="text/javascript" src="js/download.js"></script>
     <script type="text/javascript" src="js/resizecanvas.js"></script>
+    <script type="text/javascript" src="js/lz-string.min.js"></script>
+    <script type="text/javascript" src="js/base64-string.js"></script>
     <script type="text/javascript">
       window.onload = function() {
         generateForm();
@@ -237,8 +239,8 @@
             } else {
               var dataURL = canvas.toDataURL("image/png");
             }
-            console.log(dataURL.length);
-            document.getElementById('bg_image').value = dataURL;
+            // console.log(LZString.compress(dataURL.length));
+            document.getElementById('bg_image').value = LZString.compress(dataURL);
           }
           image.src = readerEvent.target.result;
           document.getElementById('canvas').style.backgroundImage = "url(" + reader.result + ")";
