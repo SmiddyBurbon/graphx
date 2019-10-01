@@ -1,9 +1,9 @@
 var fileSaver = document.createElement('script');
-fileSaver.src = 'FileSaver.js';
+fileSaver.src = 'js/FileSaver.js';
 document.head.appendChild(fileSaver);
 
 var toBlob = document.createElement('script');
-toBlob.src = 'canvas-toBlob.js';
+toBlob.src = 'js/canvas-toBlob.js';
 document.head.appendChild(toBlob);
 
 function cloneCanvas() {
@@ -26,15 +26,13 @@ function downloadImage(width, height) {
   cloneCanvas();
   var canvas = document.getElementById('exportable');
 
-  /*canvas.toBlob(function(blob) {
-      saveAs(blob, "image.png");
-  });*/
-
   html2canvas(canvas).then(function(canvas) {
       // updateStandings();
       canvas.id = "image";
       // document.body.appendChild(canvas);
-      Canvas2Image.saveAsPNG(canvas, width, height);
+      canvas.toBlob((blob) => {
+        saveAs(blob, 'image.png')
+      })
       // canvas.style.display = "none";
   });
 }
