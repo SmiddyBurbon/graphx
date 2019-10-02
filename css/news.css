@@ -10,6 +10,10 @@
   display: block;
   margin-left: 40px;
 }
+.input.story #canvas {
+  width: 1080px;
+  height: 1920px;
+}
 #canvas.news {
   padding: 0;
   background-position: center center;
@@ -24,6 +28,12 @@
 }
 #canvas.news #text.bottom {
   bottom: 80px;
+}
+.story #canvas.news #text.top {
+  top: 240px;
+}
+.story #canvas.news #text.bottom {
+  bottom: 240px;
 }
 #canvas.news #text.left {
   left: 80px;
