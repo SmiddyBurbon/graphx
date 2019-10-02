@@ -7,6 +7,7 @@ function getNationality(driver) {
   else if (name.includes("paffett")) { return "uk"; }
   else if (name.includes("turvey")) { return "uk"; }
   else if (name.includes("sims")) { return "uk"; }
+  else if (name.includes("calado")) { return "uk"; }
 
   else if (name.includes("frijns")) { return "nl"; }
   else if (name.includes("vries")) { return "nl"; }
@@ -49,6 +50,7 @@ function getTeam(driver) {
   else if (name.includes("frijns")) { return "virgin"; }
 
   else if (name.includes("lynn")) { return "jaguar"; }
+  else if (name.includes("calado")) { return "jaguar"; }
   else if (name.includes("piquet")) { return "jaguar"; }
   else if (name.includes("evans")) { return "jaguar"; }
 

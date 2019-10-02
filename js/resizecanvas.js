@@ -5,6 +5,6 @@ function resizeCanvas(height, scale) {
   canvas.style.transform = 'scale(' + (factor * scale) + ')';
 
   canvas.style.marginBottom = ((height - (height * (factor * scale))) * -1) + 'px';
-  canvas.style.marginLeft = 'auto';
-  canvas.style.marginRight = 'auto';
+  /*canvas.style.marginLeft = 'auto';
+  canvas.style.marginRight = 'auto';*/
 }
