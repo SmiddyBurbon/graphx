@@ -235,14 +235,6 @@
             canvas.width = w;
             canvas.height = h;
             canvas.getContext('2d').drawImage(image, 0, 0, w, h);
-
-            if (file.type == "image/jpeg") {
-              var dataURL = canvas.toDataURL("image/jpeg", 1.0);
-            } else {
-              var dataURL = canvas.toDataURL("image/png");
-            }
-            // console.log(LZString.compress(dataURL.length));
-            document.getElementById('bg_image').value = LZString.compress(dataURL);
           }
           image.src = readerEvent.target.result;
           document.getElementById('canvas').style.backgroundImage = "url(" + reader.result + ")";
