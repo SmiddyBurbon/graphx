@@ -41,6 +41,8 @@ function getNationality(driver) {
   else if (name.includes("da costa")) { return "pt"; }
 
   else if (name.includes("rosenqvist")) { return "se"; }
+
+  else if (name.includes("qing")) { return "cn"; }
 }
 
 function getTeam(driver) {
@@ -62,6 +64,7 @@ function getTeam(driver) {
 
   else if (name.includes("dillmann")) { return "nio"; }
   else if (name.includes("turvey")) { return "nio"; }
+  else if (name.includes("qing")) { return "nio"; }
 
   else if (name.includes("grassi")) { return "audi"; }
   else if (name.includes("abt")) { return "audi"; }
