@@ -17,7 +17,7 @@
 
     <section id="preview">
       <div id="canvas" class="news">
-        <div id="overlay"></div>
+        <div id="overlay" class="top left"></div>
         <div id="text" class="top left">
           <h1 id="h1"></h1>
           <h2 id="h2"></h2>
@@ -198,6 +198,7 @@
       function setLayout(id) {
         var text = document.getElementById('text');
         var logo = document.getElementById('logo');
+        var overlay = document.getElementById('overlay');
 
         var x;
         var y;
@@ -212,9 +213,11 @@
 
         text.className = "";
         logo.className = "";
+        overlay.className = "";
 
         text.className = x + " " + y;
         logo.className = "small " + x + " " + y;
+        overlay.className = x + " " + y;
       }
 
       function readURL(){
