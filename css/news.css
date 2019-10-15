@@ -3,7 +3,7 @@
   height: 100%;
   background-color: var(--main-900);
   mix-blend-mode: multiply;
-  opacity: 1;
+  opacity: 0.4;
   position: absolute;
 }
 /*#overlay.top.left {
