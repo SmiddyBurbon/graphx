@@ -318,10 +318,12 @@ span, label {
 }
 .input h1 input {
   font-size: 40px;
+  width: 800px;
 }
 .input h2 input {
   font-size: 28px;
   font-weight: 400;
+  width: 800px;
 }
 .input input::placeholder {
   color: var(--main-700);
