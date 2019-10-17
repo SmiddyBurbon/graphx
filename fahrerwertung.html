@@ -158,6 +158,9 @@
           name.addEventListener("change", function() {
             flag.src = "img/flags/" + getNationality(this.value) + ".png";
             car.src = "img/cars/" + getTeam(this.value) + ".png";
+            flag.src = "img/flags/" + getNationality(getName(this.value)) + ".png";
+            car.src = "img/cars/" + getTeam(getName(this.value)) + ".png";
+            this.value = getName(this.value);
           });
         }
 

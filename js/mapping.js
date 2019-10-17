@@ -103,6 +103,37 @@ function getTeam(driver) {
   else if (name.includes("porsche")) { return "porsche"; }
 }
 
+function getName(tla) {
+  var name = tla.toLowerCase();
+
+  switch(name) {
+    case "abt": return "Daniel Abt";
+    case "dig": return "Lucas Di Grassi";
+    case "gue": return "Maximilian Günther";
+    case "sim": return "Alexander Sims";
+    case "jev": return "Jean-Eric Vergne";
+    case "dac": return "Antonio Felix da Costa";
+    case "bir": return "Sam Bird";
+    case "fri": return "Robin Frijns";
+    case "har": return "Brendon Hartley";
+    case "mul": return "Nico Müller";
+    case "dam": return "Jerome d'Ambrosio";
+    case "weh": return "Pascal Wehrlein";
+    case "van": return "Stoffel Vandoorne";
+    case "vri": return "Nyck de Vries";
+    case "tur": return "Oliver Turvey";
+    case "qin": return "Qing Hua Ma";
+    case "bue": return "Sebastien Buemi";
+    case "row": return "Oliver Rowland";
+    case "eva": return "Mitch Evans";
+    case "cal": return "James Calado";
+    case "jan": return "Neel Jani";
+    case "lot": return "Andre Lotterer";
+    case "mas": return "Felipe Massa";
+    case "mor": return "Edoardo Mortara";
+  }
+}
+
 function getFullTeam(driver) {
   var name = driver.toLowerCase();
   var team = getTeam(driver);
