@@ -43,6 +43,19 @@ function getNationality(driver) {
   else if (name.includes("rosenqvist")) { return "se"; }
 
   else if (name.includes("qing")) { return "cn"; }
+
+  else if (name.includes("audi")) { return "audi"; }
+  else if (name.includes("bmw")) { return "bmw"; }
+  else if (name.includes("techeetah")) { return "techeetah"; }
+  else if (name.includes("virgin")) { return "virgin"; }
+  else if (name.includes("dragon")) { return "dragon"; }
+  else if (name.includes("mahindra")) { return "mahindra"; }
+  else if (name.includes("porsche")) { return "porsche"; }
+  else if (name.includes("nio")) { return "nio"; }
+  else if (name.includes("venturi")) { return "venturi"; }
+  else if (name.includes("nissan")) { return "nissan"; }
+  else if (name.includes("mercedes")) { return "mercedes"; }
+  else if (name.includes("jaguar")) { return "jaguar"; }
 }
 
 function getTeam(driver) {
