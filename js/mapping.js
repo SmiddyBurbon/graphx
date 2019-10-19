@@ -123,6 +123,7 @@ function getName(tla) {
     case "abt": return "Daniel Abt";
     case "dig": return "Lucas Di Grassi";
     case "gue": return "Maximilian Günther";
+    case "gun": return "Maximilian Günther";
     case "sim": return "Alexander Sims";
     case "jev": return "Jean-Eric Vergne";
     case "dac": return "Antonio Felix da Costa";
@@ -130,12 +131,14 @@ function getName(tla) {
     case "fri": return "Robin Frijns";
     case "har": return "Brendon Hartley";
     case "mul": return "Nico Müller";
+    case "mue": return "Nico Müller";
     case "dam": return "Jerome d'Ambrosio";
     case "weh": return "Pascal Wehrlein";
     case "van": return "Stoffel Vandoorne";
     case "vri": return "Nyck de Vries";
     case "tur": return "Oliver Turvey";
     case "qin": return "Qing Hua Ma";
+    case "ma": return "Qing Hua Ma";
     case "bue": return "Sebastien Buemi";
     case "row": return "Oliver Rowland";
     case "eva": return "Mitch Evans";
