@@ -27,6 +27,7 @@ body {
 #canvas {
   background-color: var(--main-700);
   background-repeat: no-repeat;
+  background-position: center center;
   background-size: cover;
   margin: 0 auto;
   color: var(--main-700);
@@ -45,7 +46,9 @@ body {
   background-image: url('../img/bg/bg_city_01.png');
 }
 #canvas.results {
-  background-image: url('../img/bg/bg_city_01.png');
+  /* background-image: url('../img/bg/bg_city_01.png'); */
+  background-size: 2400px auto;
+  background-position-x: 0;
 }
 #canvas.quali {
   width: 1920px;
@@ -414,6 +417,16 @@ span, label {
   top: -9999px;
 }
 
-@media (max-width: 959px) {
-  #form
+.input #input button {
+  background-color: var(--veryLightGrey);
+  border: 1px solid var(--lightGrey);
+  border-radius: 2px;
+  height: 48px;
+  padding: 0 8px 0 48px;
+  color: #333;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+#bgImageButton {
+  background-image: url('../img/icons/ic_bgImage.svg');
 }
