@@ -40,20 +40,20 @@ body {
   transform-origin: top left;
 }
 #canvas.drivers {
-  background-image: url('../img/bg/bg_fahrerwertung_01.jpg');
+  background-image: url('../img/bg/bg_default.jpg');
 }
 #canvas.teams {
-  background-image: url('../img/bg/bg_city_01.png');
+  background-image: url('../img/bg/bg_default.jpg');
 }
 #canvas.results {
-  /* background-image: url('../img/bg/bg_city_01.png'); */
+  background-image: url('../img/bg/bg_default.jpg');
   background-size: 2400px auto;
   background-position-x: 0;
 }
 #canvas.quali {
   width: 1920px;
   height: 1080px;
-  background-image: url('../img/bg/bg_city_01.png');
+  background-image: url('../img/bg/bg_default.jpg');
   /*transform: scale(0.5);*/
   transform-origin: top left;
 }
