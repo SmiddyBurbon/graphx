@@ -8,6 +8,11 @@
   </head>
 
   <body class="input">
+    <section id="input" class="news">
+      <div id="form">
+      </div>
+      <!-- <button id="btnSubmit" onclick="generateImage()">Generate image</button> -->
+    </section>
     <section id="preview">
       <div id="canvas" class="quali">
         <div class="headline">
@@ -37,6 +42,8 @@
     <script type="text/javascript" src="js/mapping.js"></script>
     <script type="text/javascript" src="js/resizecanvas.js"></script>
     <script type="text/javascript" src="js/download.js"></script>
+    <script type="text/javascript" src="js/canvas-toBlob.js"></script>
+    <script type="text/javascript" src="js/FileSaver.js"></script>
     <script type="text/javascript">
       window.onload = function() {
         generateForm();
@@ -88,6 +95,38 @@
           document.getElementById('ranking').appendChild(column);
         }
         addEventListeners();
+        createbgImage();
+      }
+
+      function createbgImage() {
+        var bgImageGroup = document.createElement('div');
+        bgImageGroup.className = "formGroup";
+
+        var bgImageInput = document.createElement('input');
+        bgImageInput.type = "file";
+        bgImageInput.id = "bg_image";
+        bgImageInput.style = "display:none;";
+        bgImageInput.addEventListener('change', readURL);
+
+        var bgImageLabel = document.createElement('label');
+        bgImageLabel.for = "bgImageInput";
+        bgImageLabel.innerHTML = "Background Image";
+
+        var bgImageButton = document.createElement('button');
+        bgImageButton.id = "bgImageButton";
+        bgImageButton.innerHTML = "Upload";
+        bgImageButton.addEventListener('click', function() {
+          if(bgImageInput && document.createEvent) {
+             var evt = document.createEvent("MouseEvents");
+             evt.initEvent("click", true, false);
+             bgImageInput.dispatchEvent(evt);
+          }
+        });
+
+        bgImageGroup.appendChild(bgImageLabel);
+        bgImageGroup.appendChild(bgImageInput);
+        bgImageGroup.appendChild(bgImageButton);
+        form.appendChild(bgImageGroup);
       }
 
       function addEventListeners() {
@@ -114,6 +153,36 @@
               team.value = getFullTeam(this.value);
             });
           }
+        }
+      }
+
+      function readURL(){
+        var file = document.getElementById('bg_image').files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(readerEvent) {
+          var image = new Image();
+          image.onload = function (imageEvent) {
+            var max_size = 1200;
+            var w = image.width;
+            var h = image.height;
+
+            if (w > h) {  if (w > max_size) { h*=max_size/w; w=max_size; }
+            } else     {  if (h > max_size) { w*=max_size/h; h=max_size; } }
+
+            var canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            canvas.getContext('2d').drawImage(image, 0, 0, w, h);
+          }
+          image.src = readerEvent.target.result;
+          document.getElementById('canvas').style.backgroundImage = "url(" + reader.result + ")";
+        }
+
+        if(file){
+          reader.readAsDataURL(file);
+        }
+        else{
         }
       }
 
