@@ -145,6 +145,7 @@
         }
         addEventListeners();
         createbgImage();
+        createLayoutOptions();
       }
 
       function createbgImage() {
@@ -176,6 +177,52 @@
         bgImageGroup.appendChild(bgImageInput);
         bgImageGroup.appendChild(bgImageButton);
         form.appendChild(bgImageGroup);
+      }
+
+      function createLayoutOptions() {
+        var layoutGroup = document.createElement('div');
+        layoutGroup.className = "formGroup";
+
+        var layoutLabel = document.createElement('label');
+        layoutLabel.innerHTML = "Layout";
+
+        var buttonGroup = document.createElement('div');
+        buttonGroup.className = "buttonGroup";
+
+        var top = document.createElement('button');
+        var middle = document.createElement('button');
+        var bottom = document.createElement('button');
+
+        top.id = "top";
+        middle.id = "middle";
+        bottom.id = "bottom";
+
+        top.type = "button";
+        middle.type = "button";
+        bottom.type = "button";
+
+        top.setAttribute('onclick', 'setLayout(top.id)');
+        middle.setAttribute('onclick', 'setLayout(middle.id)');
+        bottom.setAttribute('onclick', 'setLayout(bottom.id)');
+
+        layoutGroup.appendChild(layoutLabel);
+        buttonGroup.appendChild(top);
+        buttonGroup.appendChild(middle);
+        buttonGroup.appendChild(bottom);
+        layoutGroup.appendChild(buttonGroup);
+        form.appendChild(layoutGroup);
+      }
+
+      function setLayout(id) {
+        var canvas = document.getElementById('canvas');
+        id = id.toLowerCase();
+        console.log(id);
+
+        if(id.includes('top')) { canvas.style.backgroundPositionY = "0"; }
+        else if(id.includes('middle')) { canvas.style.backgroundPositionY = "center"; }
+        else if(id.includes('bottom')) { canvas.style.backgroundPositionY = "bottom"; }
+
+        console.log(canvas.style.backgroundPositionY);
       }
 
       function addEventListeners() {

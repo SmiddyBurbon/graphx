@@ -430,3 +430,13 @@ span, label {
 #bgImageButton {
   background-image: url('../img/icons/ic_bgImage.svg');
 }
+
+#top {
+  background-image: url('../img/icons/ic_top.svg');
+}
+#middle {
+  background-image: url('../img/icons/ic_middle.svg');
+}
+#bottom {
+  background-image: url('../img/icons/ic_bottom.svg');
+}
