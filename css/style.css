@@ -39,13 +39,11 @@ body {
   position: relative;
   transform-origin: top left;
 }
-#canvas.drivers {
-  background-image: url('../img/bg/bg_default.jpg');
-}
 #canvas.teams {
   background-image: url('../img/bg/bg_default.jpg');
 }
-#canvas.results {
+#canvas.results,
+#canvas.drivers {
   background-image: url('../img/bg/bg_default.jpg');
   background-size: 2400px auto;
   background-position-x: 0;

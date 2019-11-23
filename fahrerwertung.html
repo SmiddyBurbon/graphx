@@ -145,7 +145,7 @@
         }
         addEventListeners();
         createbgImage();
-        createLayoutOptions();
+        // createLayoutOptions();
       }
 
       function createbgImage() {
@@ -184,7 +184,7 @@
         layoutGroup.className = "formGroup";
 
         var layoutLabel = document.createElement('label');
-        layoutLabel.innerHTML = "Layout";
+        layoutLabel.innerHTML = "BG Image Position";
 
         var buttonGroup = document.createElement('div');
         buttonGroup.className = "buttonGroup";
@@ -253,10 +253,10 @@
         var pos = document.getElementById('driver1').childNodes[0];
         pos.addEventListener("change", function() {
           if (pos.value > 1) {
-            document.getElementById("canvas").style.backgroundImage = "url('img/bg/bg_fahrerwertung_02.jpg')";
+            document.getElementById("canvas").style.backgroundPositionX = "100%";
           }
           else if (pos.value == 1) {
-            document.getElementById("canvas").style.backgroundImage = "url('img/bg/bg_fahrerwertung_01.jpg')";
+            document.getElementById("canvas").style.backgroundPositionX = "0";
           }
         })
       }
