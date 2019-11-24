@@ -147,6 +147,60 @@ function getName(tla) {
     case "lot": return "Andre Lotterer";
     case "mas": return "Felipe Massa";
     case "mor": return "Edoardo Mortara";
+
+    case "66": return "Daniel Abt";
+    case "11": return "Lucas Di Grassi";
+    case "28": return "Maximilian Günther";
+    case "27": return "Alexander Sims";
+    case "25": return "Jean-Eric Vergne";
+    case "13": return "Antonio Felix da Costa";
+    case "2": return "Sam Bird";
+    case "4": return "Robin Frijns";
+    case "6": return "Brendon Hartley";
+    case "7": return "Nico Müller";
+    case "64": return "Jerome d'Ambrosio";
+    case "94": return "Pascal Wehrlein";
+    case "5": return "Stoffel Vandoorne";
+    case "17": return "Nyck de Vries";
+    case "3": return "Oliver Turvey";
+    case "33": return "Qing Hua Ma";
+    case "23": return "Sebastien Buemi";
+    case "22": return "Oliver Rowland";
+    case "20": return "Mitch Evans";
+    case "51": return "James Calado";
+    case "18": return "Neel Jani";
+    case "36": return "Andre Lotterer";
+    case "17": return "Felipe Massa";
+    case "48": return "Edoardo Mortara";
+  }
+}
+
+function convertNumberToName(number) {
+  switch(number) {
+    case 66: return "Daniel Abt";
+    case 11: return "Lucas Di Grassi";
+    case 28: return "Maximilian Günther";
+    case 27: return "Alexander Sims";
+    case 25: return "Jean-Eric Vergne";
+    case 13: return "Antonio Felix da Costa";
+    case 2: return "Sam Bird";
+    case 4: return "Robin Frijns";
+    case 6: return "Brendon Hartley";
+    case 7: return "Nico Müller";
+    case 64: return "Jerome d'Ambrosio";
+    case 94: return "Pascal Wehrlein";
+    case 5: return "Stoffel Vandoorne";
+    case 17: return "Nyck de Vries";
+    case 3: return "Oliver Turvey";
+    case 33: return "Qing Hua Ma";
+    case 23: return "Sebastien Buemi";
+    case 22: return "Oliver Rowland";
+    case 20: return "Mitch Evans";
+    case 51: return "James Calado";
+    case 18: return "Neel Jani";
+    case 36: return "Andre Lotterer";
+    case 17: return "Felipe Massa";
+    case 48: return "Edoardo Mortara";
   }
 }
 
