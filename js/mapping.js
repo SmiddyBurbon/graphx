@@ -172,6 +172,7 @@ function getName(tla) {
     case "36": return "Andre Lotterer";
     case "17": return "Felipe Massa";
     case "48": return "Edoardo Mortara";
+    default: return name;
   }
 }
 
