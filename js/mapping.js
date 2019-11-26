@@ -24,7 +24,7 @@ function getNationality(driver) {
   else if (name.includes("ambrosio")) { return "be"; }
 
   else if (name.includes("günther")) { return "de"; }
-  else if (name.includes("abt")) { return "de"; }
+  else if (name.includes("abt") && !(name.includes("audi"))) { return "de"; }
   else if (name.includes("lotterer")) { return "de"; }
   else if (name.includes("wehrlein")) { return "de"; }
 
