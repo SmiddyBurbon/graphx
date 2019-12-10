@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body class="input">
+    <section id="input" class="news">
+      <div id="form">
+      </div>
+      <!-- <button id="btnSubmit" onclick="generateImage()">Generate image</button> -->
+    </section>
+
+    <section id="preview">
+      <div id="canvas" class="results">
+        <div class="headline">
+          <div id="country"></div>
+          <div id="event">
+            <h1><input id="inputH1" type="text" value="Rennergebnis" /></h1>
+            <h2><input id="inputH2" type="text" placeholder="E-Prix" /></h2>
+          </div>
+        </div>
+
+        <div id="ranking">
+        </div>
+
+        <img id="logo" class="small" src="img/logo_small.png" />
+      </div>
+    </section>
+
+    <section class="download">
+      <button id="btn-download" onclick="downloadImage(1200, 1200)">Download image</button>
+      <p class="hint">If the download doesn't start, right click the generated image below to save it on your device.</p>
+    </section>
+
+    <div id="exportable"></div>
+
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <script type="text/javascript" src="js/canvas2image.js"></script>
+    <script type="text/javascript" src="js/mapping.js"></script>
+    <script type="text/javascript" src="js/resizecanvas.js"></script>
+    <script type="text/javascript" src="js/download.js"></script>
+    <script type="text/javascript" src="js/canvas-toBlob.js"></script>
+    <script type="text/javascript" src="js/FileSaver.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        generateForm();
+        resizeCanvas(1200, 1);
+      };
+
+      function generateForm() {
+        var form = document.getElementById('form');
+
+        for (let i = 1; i < 13; i++) {
+          var div = document.createElement('div');
+          div.className = "driver";
+          div.id = "driver" + i;
+
+          var pos = document.createElement('input');
+          pos.className = "position";
+          pos.type = "text";
+          pos.value = i;
+
+          var person = document.createElement('div');
+          person.className = "person";
+
+          var flag = document.createElement('img');
+          flag.className = "flag";
+          person.appendChild(flag);
+
+          var name = document.createElement('input');
+          name.className = "name";
+          name.type = "text";
+          name.placeholder = "Driver Name";
+          person.appendChild(name);
+
+          var gap = document.createElement('input');
+          gap.className = "gap";
+          gap.type = "text";
+          gap.placeholder = "+ 0.000";
+          person.appendChild(gap);
+
+          var car = document.createElement('img');
+          car.className = "car";
+          person.appendChild(car);
+
+          document.getElementById('ranking').appendChild(div);
+          div.appendChild(pos);
+          div.appendChild(person);
+        }
+        addEventListeners();
+        createbgImage();
+      }
+
+      function createbgImage() {
+        var bgImageGroup = document.createElement('div');
+        bgImageGroup.className = "formGroup";
+
+        var bgImageInput = document.createElement('input');
+        bgImageInput.type = "file";
+        bgImageInput.id = "bg_image";
+        bgImageInput.style = "display:none;";
+        bgImageInput.addEventListener('change', readURL);
+
+        var bgImageLabel = document.createElement('label');
+        bgImageLabel.for = "bgImageInput";
+        bgImageLabel.innerHTML = "Background Image";
+
+        var bgImageButton = document.createElement('button');
+        bgImageButton.id = "bgImageButton";
+        bgImageButton.innerHTML = "Upload";
+        bgImageButton.addEventListener('click', function() {
+          if(bgImageInput && document.createEvent) {
+             var evt = document.createEvent("MouseEvents");
+             evt.initEvent("click", true, false);
+             bgImageInput.dispatchEvent(evt);
+          }
+        });
+
+        bgImageGroup.appendChild(bgImageLabel);
+        bgImageGroup.appendChild(bgImageInput);
+        bgImageGroup.appendChild(bgImageButton);
+        form.appendChild(bgImageGroup);
+      }
+
+      function addEventListeners() {
+        var h2 = document.getElementById('inputH2');
+        h2.addEventListener('change', function() {
+          let flagOld = document.getElementById('countryFlag');
+          if(typeof(flagOld) != 'undefined' && flagOld != null){
+              flagOld.parentNode.removeChild(flagOld);
+          }
+
+          var div = document.getElementById('country');
+          var img = document.createElement('img');
+          img.className = "flag";
+          img.id = "countryFlag";
+          img.src = "img/flags/" + getCountry(h2.value) + ".png";
+          div.appendChild(img);
+        });
+
+        for(let i = 0; i < 12; i++) {
+          let driver = document.getElementsByClassName('driver')[i].childNodes[1];
+          let flag = driver.childNodes[0];
+          let name = driver.childNodes[1];
+          let car = driver.childNodes[3];
+          name.addEventListener("change", function() {
+            this.value = getName(this.value);
+            flag.src = "img/flags/" + getNationality(this.value) + ".png";
+            car.src = "img/cars/" + getTeam(this.value) + ".png";
+            flag.src = "img/flags/" + getNationality(getName(this.value)) + ".png";
+            car.src = "img/cars/" + getTeam(getName(this.value)) + ".png";
+            // autocomplete(name, drivers);
+            console.log(getName(this.value));
+          });
+        }
+
+        var pos = document.getElementById('driver1').childNodes[0];
+        pos.addEventListener("change", function() {
+          if (pos.value > 1) {
+            document.getElementById("canvas").style.backgroundPositionX = "100%";
+          }
+          else if (pos.value == 1) {
+            document.getElementById("canvas").style.backgroundPositionX = "0";
+          }
+        })
+      }
+
+      function readURL(){
+        var file = document.getElementById('bg_image').files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(readerEvent) {
+          var image = new Image();
+          image.onload = function (imageEvent) {
+            var max_size = 1200;
+            var w = image.width;
+            var h = image.height;
+
+            if (w > h) {  if (w > max_size) { h*=max_size/w; w=max_size; }
+            } else     {  if (h > max_size) { w*=max_size/h; h=max_size; } }
+
+            var canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            canvas.getContext('2d').drawImage(image, 0, 0, w, h);
+          }
+          image.src = readerEvent.target.result;
+          document.getElementById('canvas').style.backgroundImage = "url(" + reader.result + ")";
+        }
+
+        if(file){
+          reader.readAsDataURL(file);
+        }
+        else{
+        }
+      }
+    </script>
+
+  </body>
+</html>
