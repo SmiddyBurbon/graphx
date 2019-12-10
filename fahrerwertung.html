@@ -228,6 +228,11 @@
       function addEventListeners() {
         var h2 = document.getElementById('inputH2');
         h2.addEventListener('change', function() {
+          let flagOld = document.getElementById('countryFlag');
+          if(typeof(flagOld) != 'undefined' && flagOld != null){
+              flagOld.parentNode.removeChild(flagOld);
+          }
+          
           var div = document.getElementById('country');
           var img = document.createElement('img');
           img.className = "flag";
