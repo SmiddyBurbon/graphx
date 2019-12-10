@@ -55,6 +55,12 @@ body {
   /*transform: scale(0.5);*/
   transform-origin: top left;
 }
+#canvas.ten {
+  padding-top: 148px;
+}
+#canvas.results.ten #logo.small {
+  bottom: -132px;
+}
 
 #country {
   margin-right: 24px;

@@ -14,11 +14,11 @@
     </section>
 
     <section id="preview">
-      <div id="canvas" class="results">
+      <div id="canvas" class="results ten">
         <div class="headline">
           <div id="country"></div>
           <div id="event">
-            <h1><input id="inputH1" type="text" value="Rennergebnis" /></h1>
+            <h1><input id="inputH1" type="text" value="Fahrer-Rating" /></h1>
             <h2><input id="inputH2" type="text" placeholder="E-Prix" /></h2>
           </div>
         </div>
@@ -26,7 +26,7 @@
         <div id="ranking">
         </div>
 
-        <img id="logo" class="small" src="img/logo_small.png" />
+        <img id="logo" class="small top" src="img/logo_small.png" />
       </div>
     </section>
 
@@ -53,7 +53,7 @@
       function generateForm() {
         var form = document.getElementById('form');
 
-        for (let i = 1; i < 13; i++) {
+        for (let i = 1; i < 11; i++) {
           var div = document.createElement('div');
           div.className = "driver";
           div.id = "driver" + i;
@@ -141,7 +141,7 @@
           div.appendChild(img);
         });
 
-        for(let i = 0; i < 12; i++) {
+        for(let i = 0; i < 10; i++) {
           let driver = document.getElementsByClassName('driver')[i].childNodes[1];
           let flag = driver.childNodes[0];
           let name = driver.childNodes[1];
