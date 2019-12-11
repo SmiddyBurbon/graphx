@@ -23,6 +23,7 @@ body {
   --main-900: #033359;
   --veryLightGrey: #eee;
   --lightGrey: #aaa;
+  --white: #fff;
 }
 #canvas {
   background-color: var(--main-700);
@@ -58,6 +59,82 @@ body {
 #canvas.ten {
   padding-top: 148px;
 }
+
+.input #canvas.rating {
+  height: 120px;
+  background-color: var(--white);
+  text-align: left;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+#canvas.rating .position,
+#canvas.rating .profile {
+  height: 100%;
+}
+#canvas.rating .position {
+  height: 100%;
+  width: 200px;
+  padding-top: 0;
+  padding-right: 64px;
+  background-color: var(--main-800);
+  color: var(--main-200);
+  font-size: 6rem;
+  font-style: italic;
+  letter-spacing: -0.4rem;
+  text-align: center;
+}
+#canvas.rating #profile {
+  width: 200px;
+  margin-left: -100px;
+  /*background-image: url('../img/drivers/abt.png');*/
+  background-repeat: no-repeat;
+  background-position-y: -16px;
+  background-size: auto 200%;
+}
+#canvas.rating .person {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#canvas.rating .person div {
+  flex-direction: column;
+  display: flex;
+}
+#canvas.rating #flag {
+  width: 80px;
+  height: 50px;
+  margin-right: 16px;
+}
+#canvas.rating .person div #person,
+#canvas.rating .person div #team {
+  width: 400px;
+}
+#canvas.rating .person div #team {
+  height: auto;
+  margin-top: 0;
+  font-weight: 400;
+  font-size: 20px;
+}
+#canvas.rating .singleRating {
+  background-color: var(--main-200);
+  width: 120px;
+  margin-right: 16px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+#canvas.rating .singleRating input {
+  width: 100%;
+  text-align: center;
+}
+#canvas.rating .singleRating span {
+  font-size: 1.25rem;
+  font-weight: 400;
+  opacity: 1;
+}
+
+
 #canvas.results.ten #logo.small {
   bottom: -132px;
 }

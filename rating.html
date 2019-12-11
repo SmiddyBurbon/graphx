@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body class="input">
+    <section id="preview">
+      <div id="canvas" class="rating">
+        <input type="text" class="position" placeholder="1" />
+        <div id="profile"></div>
+        <div class="person">
+          <img id="flag" />
+          <div>
+            <input type="text" id="name" placeholder="Driver Name" />
+            <input type="text" id="team" placeholder="Team" />
+          </div>
+        </div>
+
+        <div class="singleRating">
+          <div>
+            <input type="text" placeholder="0.0" />
+            <span>Saison</span>
+          </div>
+        </div>
+
+        <div class="singleRating">
+          <div>
+            <input type="text" placeholder="0.0" />
+            <span>Rennen</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="download">
+      <button id="btn-download" onclick="downloadImage(1200, 1200)">Download image</button>
+      <p class="hint">If the download doesn't start, right click the generated image below to save it on your device.</p>
+    </section>
+
+    <div id="exportable"></div>
+
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <script type="text/javascript" src="js/canvas2image.js"></script>
+    <script type="text/javascript" src="js/mapping.js"></script>
+    <script type="text/javascript" src="js/resizecanvas.js"></script>
+    <script type="text/javascript" src="js/download.js"></script>
+    <script type="text/javascript" src="js/canvas-toBlob.js"></script>
+    <script type="text/javascript" src="js/FileSaver.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        resizeCanvas(108, 1);
+        addEventListeners();
+      };
+
+      function addEventListeners() {
+        let flag = document.getElementById('flag');
+        let profile = document.getElementById('profile');
+        let name = document.getElementById('name');
+        let team = document.getElementById('team');
+        name.addEventListener("change", function() {
+          this.value = getName(this.value);
+          flag.src = "img/flags/" + getNationality(this.value) + ".png";
+          team.value = getFullTeamName(this.value);
+          flag.src = "img/flags/" + getNationality(getName(this.value)) + ".png";
+          profile.style.backgroundImage = "url('img/drivers/" + getProfile(this.value) + ".png')";
+          // autocomplete(name, drivers);
+          console.log("url('img/drivers/'" + getProfile(this.value) + ".png');");
+        });
+      }
+    </script>
+
+  </body>
+</html>

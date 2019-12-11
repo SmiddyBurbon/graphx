@@ -116,6 +116,47 @@ function getTeam(driver) {
   else if (name.includes("porsche")) { return "porsche"; }
 }
 
+function getProfile(driver) {
+  var name = driver.toLowerCase();
+
+  if (name.includes("bird")) { return "bird"; }
+  else if (name.includes("frijns")) { return "frijns"; }
+
+  else if (name.includes("calado")) { return "calado"; }
+  else if (name.includes("evans")) { return "evans"; }
+
+  else if (name.includes("vandoorne")) { return "vandoorne"; }
+  else if (name.includes("vries")) { return "devries"; }
+
+  else if (name.includes("hartley")) { return "hartley"; }
+  else if (name.includes("müller")) { return "mueller"; }
+
+  else if (name.includes("turvey")) { return "turvey"; }
+  else if (name.includes("qing")) { return "qing"; }
+
+  else if (name.includes("grassi")) { return "digrassi"; }
+  else if (name.includes("abt")) { return "abt"; }
+
+  else if (name.includes("massa")) { return "massa"; }
+  else if (name.includes("mortara")) { return "mortara"; }
+
+  else if (name.includes("rowland")) { return "rowland"; }
+  else if (name.includes("buemi")) { return "buemi"; }
+
+  else if (name.includes("vergne")) { return "vergne"; }
+  else if (name.includes("da costa")) { return "dacosta"; }
+
+  else if (name.includes("günther")) { return "guenther"; }
+  else if (name.includes("sims")) { return "sims"; }
+
+  else if (name.includes("ambrosio")) { return "dambrosio"; }
+  else if (name.includes("rosenqvist")) { return "rosenqvist"; }
+  else if (name.includes("wehrlein")) { return "wehrlein"; }
+
+  else if (name.includes("jani")) { return "jani"; }
+  else if (name.includes("lotterer")) { return "lotterer"; }
+}
+
 function getName(tla) {
   var name = tla.toLowerCase();
 
@@ -205,7 +246,7 @@ function convertNumberToName(number) {
   }
 }
 
-function getFullTeam(driver) {
+function getTeamName(driver) {
   var name = driver.toLowerCase();
   var team = getTeam(driver);
 
@@ -222,6 +263,25 @@ function getFullTeam(driver) {
   else if (team.includes("hwa")) { return "HWA"; }
   else if (team.includes("mercedes")) { return "Mercedes"; }
   else if (team.includes("porsche")) { return "Porsche"; }
+}
+
+function getFullTeamName(driver) {
+  var name = driver.toLowerCase();
+  var team = getTeam(driver);
+
+  if (team.includes("techeetah")) { return "DS Techeetah"; }
+  else if (team.includes("mahindra")) { return "Mahindra Racing"; }
+  else if (team.includes("virgin")) { return "Envision Virgin Racing"; }
+  else if (team.includes("nissan")) { return "Nissan e.dams"; }
+  else if (team.includes("bmw")) { return "BMW i Andretti Motorsport"; }
+  else if (team.includes("audi")) { return "Audi Sport Abt Schaeffler"; }
+  else if (team.includes("nio")) { return "NIO 333 Formula E Team"; }
+  else if (team.includes("venturi")) { return "ROKIT Venturi Racing"; }
+  else if (team.includes("dragon")) { return "GEOX Dragon"; }
+  else if (team.includes("jaguar")) { return "Panasonic Jaguar Racing"; }
+  else if (team.includes("hwa")) { return "HWA"; }
+  else if (team.includes("mercedes")) { return "Mercedes-Benz EQ Formula E Team"; }
+  else if (team.includes("porsche")) { return "TAG Heuer Porsche Formula E Team"; }
 }
 
 function getCountry(city) {

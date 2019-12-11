@@ -155,7 +155,7 @@
             let team = column.getElementsByClassName('driver')[i].childNodes[1];
             name.addEventListener("change", function() {
               flag.src = "img/flags/" + getNationality(this.value) + ".png";
-              team.value = getFullTeam(this.value);
+              team.value = getTeamName(this.value);
             });
           }
         }
