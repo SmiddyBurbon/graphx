@@ -76,7 +76,7 @@ body {
   height: 100%;
   width: 200px;
   padding-top: 0;
-  padding-right: 64px;
+  padding-right: 40px;
   background-color: var(--main-800);
   color: var(--main-200);
   font-size: 6rem;
