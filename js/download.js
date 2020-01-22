@@ -6,7 +6,7 @@ var toBlob = document.createElement('script');
 toBlob.src = 'js/canvas-toBlob.js';
 document.head.appendChild(toBlob);
 
-function cloneCanvas() {
+function cloneCanvas(width, height) {
   var canvas = document.getElementById('canvas');
   var clone = canvas.cloneNode(true);
 
@@ -16,17 +16,26 @@ function cloneCanvas() {
       exportable.removeChild(child);
       child = exportable.lastElementChild;
   }
-  exportable.appendChild(clone);
 
   clone.style.transform = 'scale(1)';
+  clone.style.width = width;
+  clone.style.height = height;
+  exportable.style.width = width;
+  exportable.style.height = height;
   clone.style.margin = "0";
+  exportable.appendChild(clone);
 }
 
 function downloadImage(width, height) {
-  cloneCanvas();
+  cloneCanvas(width, height);
   var canvas = document.getElementById('exportable');
+  canvas.style.width = width;
+  canvas.style.height = height;
 
-  html2canvas(canvas).then(function(canvas) {
+  html2canvas(canvas, {
+    scale: 1
+  }).then(function(canvas) {
+
       // updateStandings();
       canvas.id = "image";
       // document.body.appendChild(canvas);
