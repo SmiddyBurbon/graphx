@@ -44,6 +44,31 @@ function getNationality(driver) {
 
   else if (name.includes("qing")) { return "cn"; }
 
+  else if (name.includes("cassidy")) { return "nz"; }
+  else if (name.includes("camara")) { return "br"; }
+  else if (name.includes("albuquerque")) { return "pt"; }
+  else if (name.includes("lapierre")) { return "fr"; }
+  else if (name.includes("kirkwood")) { return "us"; }
+  else if (name.includes("nato")) { return "fr"; }
+  else if (name.includes("hughes")) { return "uk"; }
+  else if (name.includes("auer")) { return "at"; }
+  else if (name.includes("linde")) { return "rs"; }
+  else if (name.includes("fenestraz")) { return "fr"; }
+  else if (name.includes("drudi")) { return "it"; }
+  else if (name.includes("chadwick")) { return "uk"; }
+  else if (name.includes("takaboshi")) { return "jp"; }
+  else if (name.includes("preining")) { return "at"; }
+  else if (name.includes("derani")) { return "br"; }
+  else if (name.includes("marden")) { return "uk"; }
+  else if (name.includes("eriksson")) { return "se"; }
+  else if (name.includes("leclerc")) { return "mc"; }
+  else if (name.includes("dejonghe")) { return "be"; }
+  else if (name.includes("powell")) { return "uk"; }
+  else if (name.includes("fuoco")) { return "it"; }
+  else if (name.includes("cao")) { return "cn"; }
+  else if (name.includes("makowiecki")) { return "fr"; }
+  else if (name.includes("juncadella")) { return "es"; }
+
   else if (name.includes("audi")) { return "audi"; }
   else if (name.includes("bmw")) { return "bmw"; }
   else if (name.includes("techeetah")) { return "techeetah"; }
@@ -100,6 +125,31 @@ function getTeam(driver) {
 
   else if (name.includes("jani")) { return "porsche"; }
   else if (name.includes("lotterer")) { return "porsche"; }
+
+  else if (name.includes("cassidy")) { return "virgin"; }
+  else if (name.includes("camara")) { return "dragon"; }
+  else if (name.includes("albuquerque")) { return "techeetah"; }
+  else if (name.includes("lapierre")) { return "techeetah"; }
+  else if (name.includes("kirkwood")) { return "bmw"; }
+  else if (name.includes("nato")) { return "venturi"; }
+  else if (name.includes("hughes")) { return "mercedes"; }
+  else if (name.includes("auer")) { return "bmw"; }
+  else if (name.includes("linde")) { return "audi"; }
+  else if (name.includes("fenestraz")) { return "jaguar"; }
+  else if (name.includes("drudi")) { return "audi"; }
+  else if (name.includes("chadwick")) { return "jaguar"; }
+  else if (name.includes("takaboshi")) { return "nissan"; }
+  else if (name.includes("preining")) { return "porsche"; }
+  else if (name.includes("derani")) { return "mahindra"; }
+  else if (name.includes("marden")) { return "nissan"; }
+  else if (name.includes("eriksson")) { return "dragon"; }
+  else if (name.includes("leclerc")) { return "venturi"; }
+  else if (name.includes("dejonghe")) { return "mahindra"; }
+  else if (name.includes("powell")) { return "virgin"; }
+  else if (name.includes("fuoco")) { return "nio"; }
+  else if (name.includes("cao")) { return "nio"; }
+  else if (name.includes("makowiecki")) { return "porsche"; }
+  else if (name.includes("juncadella")) { return "mercedes"; }
 
   else if (name.includes("techeetah")) { return "techeetah"; }
   else if (name.includes("mahindra")) { return "mahindra"; }
@@ -288,7 +338,7 @@ function getCountry(city) {
   var country = city.toLowerCase();
 
   if (country.includes("diriyya")) { return "sa"; }
-  else if (country.includes("marrakesch")) { return "ma"; }
+  else if (country.includes("marra")) { return "ma"; }
   else if (country.includes("santiago")) { return "cl"; }
   else if (country.includes("mexico")) { return "mx"; }
   else if (country.includes("hong")) { return "hk"; }
