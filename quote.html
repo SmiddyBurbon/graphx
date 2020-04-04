@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/news.css" />
+  </head>
+
+  <body class="input">
+    <section id="input" class="news">
+      <div id="form">
+      </div>
+      <!-- <button id="btnSubmit" onclick="generateImage()">Generate image</button> -->
+    </section>
+
+    <section id="preview">
+      <div id="canvas" class="quote">
+        <div id="overlay" class="left">
+          <div id="text">
+            <h2 id="h2"></h2>
+            <h1 id="h1"></h1>
+          </div>
+
+          <img id="logo" class="small" src="img/logo_small.png" />
+        </div>
+      </div>
+    </section>
+
+    <section class="download">
+      <button id="btn-download" onclick="downloadImage(1200, 1200)">Download image</button>
+      <p class="hint">If the download doesn't start, right click the generated image below to save it on your device.</p>
+    </section>
+
+    <div id="exportable"></div>
+
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
+    <script type="text/javascript" src="js/canvas2image.js"></script>
+    <script type="text/javascript" src="js/mapping.js"></script>
+    <script type="text/javascript" src="js/download.js"></script>
+    <script type="text/javascript" src="js/resizecanvas.js"></script>
+    <script type="text/javascript" src="js/canvas-toBlob.js"></script>
+    <script type="text/javascript" src="js/FileSaver.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        generateForm();
+        resizeCanvas(1920);
+      };
+
+      function autosize(){
+        var el = this;
+        setTimeout(function(){
+          el.style.cssText = 'height:auto; padding:0';
+          // for box-sizing other than "content-box" use:
+          // el.style.cssText = '-moz-box-sizing:content-box';
+          el.style.cssText = 'height:' + el.scrollHeight + 'px';
+          el.style.resize = "none";
+        },0);
+      }
+
+      function generateForm() {
+        var form = document.getElementById('form');
+
+        createHeadline();
+        createbgImage();
+        createLayoutOptions();
+        createbgSlider();
+        createZoomSlider();
+        createFontSlider();
+      }
+
+      function createHeadline() {
+        var roofline = document.createElement('textarea');
+        roofline.placeholder = "Roofline";
+        roofline.style.resize = "none";
+        roofline.rows = "1";
+        roofline.addEventListener('keydown', autosize);
+
+        var headline = document.createElement('textarea');
+        headline.placeholder = "Headline";
+        headline.style.resize = "none";
+        headline.rows = "1";
+        headline.addEventListener('keydown', autosize);
+
+        var h1 = document.getElementById('h1');
+        var h2 = document.getElementById('h2');
+        h1.appendChild(roofline);
+        h2.appendChild(headline);
+      }
+
+      function createbgImage() {
+        var bgImageGroup = document.createElement('div');
+        bgImageGroup.className = "formGroup";
+
+        var bgImageInput = document.createElement('input');
+        bgImageInput.type = "file";
+        bgImageInput.id = "bg_image";
+        bgImageInput.style = "display:none;";
+
+        var bgImageLabel = document.createElement('label');
+        bgImageLabel.for = "bgImageInput";
+        bgImageLabel.innerHTML = "Background Image";
+
+        var bgImageButton = document.createElement('button');
+        bgImageButton.id = "bgImageButton"
+        bgImageButton.addEventListener('click', function() {
+          if(bgImageInput && document.createEvent) {
+             var evt = document.createEvent("MouseEvents");
+             evt.initEvent("click", true, false);
+             bgImageInput.dispatchEvent(evt);
+          }
+        });
+
+        bgImageGroup.appendChild(bgImageLabel);
+        bgImageGroup.appendChild(bgImageInput);
+        bgImageGroup.appendChild(bgImageButton);
+        form.appendChild(bgImageGroup);
+      }
+
+      function createbgSlider() {
+        var sliderGroup = document.createElement('div');
+        sliderGroup.className = "formGroup";
+
+        var slider = document.createElement('input');
+        var sliderValue = document.createElement('input');
+        var sliderLabel = document.createElement('label');
+
+        sliderLabel.innerHTML = "Background Image Position (0 = Left, 50 = Center, 100 = Right)";
+        sliderGroup.appendChild(sliderLabel);
+
+        slider.type = "range";
+        slider.min = 0;
+        slider.max = 100;
+        sliderGroup.appendChild(slider);
+
+        sliderValue.type = "number";
+        sliderValue.min = 0;
+        sliderValue.max = 100;
+        sliderValue.value = slider.value;
+        sliderGroup.appendChild(sliderValue);
+        form.appendChild(sliderGroup)
+
+        var canvas = document.getElementById('canvas');
+        var bgImage = document.getElementById('bg_image');
+
+        bgImage.addEventListener('change', readURL);
+
+        slider.oninput = function() {
+          sliderValue.value = slider.value;
+          canvas.style.backgroundPositionX = slider.value + "%";
+        };
+
+        sliderValue.addEventListener('change', function() {
+          slider.value = sliderValue.value;
+          canvas.style.backgroundPositionX = sliderValue.value + "%";
+        });
+      }
+
+      function createZoomSlider() {
+        var sliderGroup = document.createElement('div');
+        sliderGroup.className = "formGroup";
+
+        var slider = document.createElement('input');
+        var sliderValue = document.createElement('input');
+        var sliderLabel = document.createElement('label');
+
+        sliderLabel.innerHTML = "Zoom %";
+        sliderGroup.appendChild(sliderLabel);
+
+        slider.type = "range";
+        slider.min = 100;
+        slider.max = 300;
+        sliderGroup.appendChild(slider);
+
+        sliderValue.type = "number";
+        sliderValue.min = 100;
+        sliderValue.max = 300;
+        sliderValue.value = slider.value;
+        sliderGroup.appendChild(sliderValue);
+        form.appendChild(sliderGroup)
+
+        var canvas = document.getElementById('canvas');
+        var bgImage = document.getElementById('bg_image');
+
+        bgImage.addEventListener('change', readURL);
+
+        slider.oninput = function() {
+          sliderValue.value = slider.value;
+          canvas.style.backgroundSize = slider.value + "%";
+        };
+
+        sliderValue.addEventListener('change', function() {
+          slider.value = sliderValue.value;
+          canvas.style.backgroundSize = sliderValue.value + "%";
+        });
+      }
+
+      function createFontSlider() {
+        var sliderGroup = document.createElement('div');
+        sliderGroup.className = "formGroup";
+
+        var slider = document.createElement('input');
+        var sliderValue = document.createElement('input');
+        var sliderLabel = document.createElement('label');
+
+        sliderLabel.innerHTML = "Font Size";
+        sliderGroup.appendChild(sliderLabel);
+
+        slider.type = "range";
+        slider.min = 40;
+        slider.max = 80;
+        slider.value = 80;
+        sliderGroup.appendChild(slider);
+
+        sliderValue.type = "number";
+        sliderValue.min = 40;
+        sliderValue.max = 80;
+        sliderValue.value = slider.value;
+        sliderGroup.appendChild(sliderValue);
+        form.appendChild(sliderGroup)
+
+        var h2 = document.getElementById('h2').childNodes[0];
+
+        slider.oninput = function() {
+          sliderValue.value = slider.value;
+          h2.style.fontSize = slider.value + "px";
+          resizeTextarea(h2, slider.value);
+        };
+
+        sliderValue.addEventListener('change', function() {
+          slider.value = sliderValue.value;
+          h2.style.fontSize = sliderValue.value + "px";
+          resizeTextarea(h2, sliderValue.value);
+        });
+      }
+
+      function resizeTextarea(h2, fontSize) {
+        var lines = h2.offsetHeight / 94;
+        h2.style.height = lines * 1.175 * fontSize + "px";
+        console.log(lines * 1.175 * fontSize);
+      }
+
+      function createLayoutOptions() {
+        var layoutGroup = document.createElement('div');
+        layoutGroup.className = "formGroup";
+
+        var layoutLabel = document.createElement('label');
+        layoutLabel.innerHTML = "Layout";
+
+        var buttonGroup = document.createElement('div');
+        buttonGroup.className = "buttonGroup";
+
+        var topLeft = document.createElement('button');
+        var topRight = document.createElement('button');
+
+        topLeft.id = "topLeft";
+        topRight.id = "topRight";
+
+        topLeft.type = "button";
+        topRight.type = "button";
+
+        topLeft.setAttribute('onclick', 'setLayout(topLeft.id)');
+        topRight.setAttribute('onclick', 'setLayout(topRight.id)');
+
+        layoutGroup.appendChild(layoutLabel);
+        buttonGroup.appendChild(topLeft);
+        buttonGroup.appendChild(topRight);
+        layoutGroup.appendChild(buttonGroup);
+        form.appendChild(layoutGroup);
+      }
+
+      function setLayout(id) {
+        var overlay = document.getElementById('overlay');
+
+        var x;
+
+        id = id.toLowerCase();
+
+        if(id.includes('left')) { x = "left"; }
+        else if(id.includes('right')) { x = "right"; }
+
+        overlay.className = "";
+        overlay.className = x;
+      }
+
+      function readURL(){
+        var file = document.getElementById('bg_image').files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(readerEvent) {
+          var image = new Image();
+          image.onload = function (imageEvent) {
+            var max_size = 1200;
+            var w = image.width;
+            var h = image.height;
+
+            if (w > h) {  if (w > max_size) { h*=max_size/w; w=max_size; }
+            } else     {  if (h > max_size) { w*=max_size/h; h=max_size; } }
+
+            var canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            canvas.getContext('2d').drawImage(image, 0, 0, w, h);
+          }
+          image.src = readerEvent.target.result;
+          document.getElementById('canvas').style.backgroundImage = "url(" + reader.result + ")";
+        }
+
+        if(file){
+          reader.readAsDataURL(file);
+        }
+        else{
+        }
+      }
+    </script>
+
+  </body>
+</html>

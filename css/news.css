@@ -75,22 +75,27 @@
 #canvas.news #text.right input {
   text-align: right;
 }
-#canvas.news h1 textarea, #canvas.news h2 textarea {
+#canvas.news h1 textarea, #canvas.news h2 textarea,
+#canvas.quote h1 textarea, #canvas.quote h2 textarea {
   font-weight: bold;
   font-style: italic;
   letter-spacing: 0;
 }
-#canvas.news h1 textarea::placeholder, #canvas.news h2 textarea::placeholder {
+#canvas.news h1 textarea::placeholder, #canvas.news h2 textarea::placeholder,
+#canvas.quote h1 textarea::placeholder, #canvas.quote h2 textarea::placeholder {
   opacity: 0.5;
 }
-#canvas.news h1 textarea {
+#canvas.news h1 textarea,
+#canvas.quote h1 textarea {
   font-size: 32px;
   color: var(--main-200);
 }
-#canvas.news h1 textarea::placeholder {
+#canvas.news h1 textarea::placeholder,
+#canvas.quote h1 textarea::placeholder {
   color: var(--main-200);
 }
-#canvas.news h2 textarea {
+#canvas.news h2 textarea,
+#canvas.quote h2 textarea {
   font-size: 80px;
   color: #fff;
   text-transform: none;
@@ -161,4 +166,50 @@ body.input {
 }
 #bottomRight {
   background-image: url('../img/icons/ic_bottomRight.svg');
+}
+
+#canvas.quote {
+  height: 1080px;
+  width: 1920px;
+  padding: 0;
+  background-position: center center;
+  background-size: cover;
+}
+#canvas.quote #overlay {
+  width: 50%;
+  background-color: rgba(17,167,187,.8);
+  opacity: 1;
+  mix-blend-mode: normal;
+  background-blend-mode: multiply;
+  top: 0;
+  padding: 80px;
+}
+#canvas.quote #logo {
+  bottom: 0;
+}
+#canvas.quote #overlay.left #logo {
+  left: 80px;
+}
+#canvas.quote #overlay.right #logo {
+  right: 80px;
+}
+#canvas.quote #overlay.left {
+  left: 0;
+}
+#canvas.quote #overlay.right {
+  right: 0;
+}
+#canvas.quote h1,
+#canvas.quote h2 {
+  text-align: left;
+}
+#canvas.quote h1 textarea,
+#canvas.quote h2 textarea {
+  width: 100%;
+}
+#canvas.quote h2 textarea {
+  color: var(--white);
+}
+#canvas.quote h1 textarea {
+  color: var(--main-200);
 }
